@@ -18,11 +18,26 @@
   .item-price { color: var(--accent); font-size: 0.95rem; }
   .fab { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; border-radius: 50px; padding: 12px 20px; text-decoration: none; font-weight: bold; display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; }
 </style>
+
+<style id="streampro-whatsapp-estilos">
+  body { padding-bottom: 160px; }
+  #streampro-whatsapp {
+    position: fixed; bottom: 20px; right: 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    max-width: calc(100vw - 40px); z-index: 1000;
+  }
+  #streampro-whatsapp .fab {
+    position: static; justify-content: center; text-align: center;
+  }
+</style>
 </head>
 <body>
   <header>⚡ Stream<span>Pro</span></header>
   <div class="container" id="catalog"></div>
-  <a href="https://wa.me/522284075445?text=Hola,%20me%20interesa%20un%20servicio%20de%20tu%20catálogo" class="fab">💬 Pedir por WhatsApp</a>
+  <nav id="streampro-whatsapp" aria-label="Contacto por WhatsApp">
+<a href="https://wa.me/525629780972?text=Hola%2C%20me%20interesa%20un%20servicio%20de%20tu%20cat%C3%A1logo" class="fab">💬 WhatsApp · 56 2978 0972</a>
+<a href="https://wa.me/525639434114?text=Hola%2C%20me%20interesa%20un%20servicio%20de%20tu%20cat%C3%A1logo" class="fab">💬 WhatsApp · 56 3943 4114</a>
+</nav>
 
   <script>
     const data = [
