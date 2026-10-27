@@ -1,0 +1,289 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Pro | Catálogo de Servicios Premium</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        },
+                        brand: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6', 
+                            600: '#7c3aed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+        
+        .glow-text { text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+        .glass-nav { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* Estilos personalizados para las listas del catálogo */
+        .catalog-item {
+            transition: all 0.2s ease-in-out;
+        }
+        .catalog-item:hover {
+            background-color: rgba(51, 65, 85, 0.4);
+            border-radius: 0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Navegación -->
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-bolt text-brand-500 text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight">Stream<span class="text-brand-500">Pro</span></span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="hover:text-brand-400 transition-colors px-3 py-2 text-sm font-medium">Inicio</a>
+                        <a href="#catalogo" class="hover:text-brand-400 transition-colors px-3 py-2 text-sm font-medium">Catálogo</a>
+                        <a href="https://wa.me/522284075445?text=Hola%20Stream%20Pro,%20me%20interesa%20un%20servicio%20de%20su%20catálogo." target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_15px_rgba(124,58,237,0.4)]">
+                            <i class="fa-brands fa-whatsapp mr-1"></i> Contactar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-dark-700 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#inicio" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium hover:bg-dark-800">Inicio</a>
+                <a href="#catalogo" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium hover:bg-dark-800">Catálogo Completo</a>
+                <a href="https://wa.me/522284075445" target="_blank" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-green-400 hover:bg-dark-800"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-32 pb-16 lg:pt-48 lg:pb-24 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-96 bg-brand-600/20 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-dark-800/80 border border-dark-700 text-brand-400 text-sm font-semibold mb-6 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                Más de 100 Servicios Digitales Disponibles
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                El Universo Digital <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-purple-400 to-blue-500 glow-text">
+                    En un Solo Lugar
+                </span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-lg text-gray-400 mx-auto mb-10">
+                Desde tus plataformas de streaming favoritas y herramientas de trabajo, hasta gestiones vehiculares, trámites oficiales y servicios médicos. Rapidez, seguridad y garantía total.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#catalogo" class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(124,58,237,0.4)] flex items-center justify-center gap-2">
+                    Explorar Catálogo <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <section id="catalogo" class="py-12 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Nuestro Catálogo</h2>
+                <div class="h-1 w-16 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Grid de Categorías -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- 1. STREAMING -->
+                <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 md:p-8 shadow-xl">
+                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-dark-800">
+                        <div class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 text-2xl">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">Plataformas de Streaming</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <span class="text-gray-300 font-medium">Netflix Estándar (anuncios)</span>
+                            <span class="text-brand-400 font-bold">$59</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Netflix Premium</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1 mes: $95</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Disney+ Premium</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1 mes: $99 | 2 meses: $149</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Max Platino</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1m: $92 | 2m: $115 | 3m: $149</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Prime Video</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1m: $56 | 2m: $99 | Anual: $150</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">ViX Premium</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1m: $65 | 2m: $89 | 3m: $130 | 6m: $179 | Anual: $199</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <span class="text-gray-300 font-medium">Paramount+</span>
+                            <span class="text-brand-400 font-bold">$49</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Crunchyroll</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1m: $71 | 2m: $97 | Anual: $165</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <span class="text-gray-300 font-medium">Plex</span><span class="text-brand-400 font-bold">$89</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <span class="text-gray-300 font-medium">Viki Rakuten</span><span class="text-brand-400 font-bold">$77</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <span class="text-gray-300 font-medium">Universal+</span><span class="text-brand-400 font-bold">$127</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Peacock Premium</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1 mes / cuenta completa: $69</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Edye</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1 mes / cuenta completa: $39</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3 last:border-0">
+                            <div class="flex justify-between items-center"><span class="text-gray-300 font-medium">Pornhub Premium / Brazzers</span></div>
+                            <span class="text-brand-400 text-sm mt-1">1 mes: $55 c/u</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item pb-1">
+                            <span class="text-gray-300 font-medium">IPTV</span><span class="text-brand-400 font-bold">$75</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2 & 3. DEPORTES Y MÚSICA -->
+                <div class="space-y-8">
+                    <!-- DEPORTES -->
+                    <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-center gap-4 mb-6 pb-4 border-b border-dark-800">
+                            <div class="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 text-2xl">
+                                <i class="fa-solid fa-basketball"></i>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white">Deportes</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3"><span class="text-gray-300 font-medium">DAZN</span><span class="text-brand-400 font-bold">$125</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3"><span class="text-gray-300 font-medium">FOX One</span><span class="text-brand-400 font-bold">$127</span></li>
+                            <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                                <span class="text-gray-300 font-medium">NBA League Pass (1 mes / 1 disp)</span><span class="text-brand-400 text-sm mt-1">$99</span>
+                            </li>
+                            <li class="flex flex-col catalog-item pb-1">
+                                <span class="text-gray-300 font-medium">NBA League Pass (1 mes / 3 disp)</span><span class="text-brand-400 text-sm mt-1">$149</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- MÚSICA Y VIDEO -->
+                    <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-center gap-4 mb-6 pb-4 border-b border-dark-800">
+                            <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 text-2xl">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white">Música y Video</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                                <span class="text-gray-300 font-medium">Apple TV+</span><span class="text-brand-400 text-sm mt-1">1m: $99 | 3m: $148</span>
+                            </li>
+                            <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                                <span class="text-gray-300 font-medium">YouTube Premium</span><span class="text-brand-400 text-sm mt-1">1m: $79 | 2m: $159 | 3m: $180 | Fam: $200</span>
+                            </li>
+                            <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                                <span class="text-gray-300 font-medium">Spotify Premium</span><span class="text-brand-400 text-sm mt-1">1m: $69 | 2m: $138 | 3m: $165 | Fam: $199</span>
+                            </li>
+                            <li class="flex flex-col catalog-item pb-1">
+                                <span class="text-gray-300 font-medium">Deezer</span><span class="text-brand-400 text-sm mt-1">1m: $69 | 2m: $138</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. APLICACIONES Y HERRAMIENTAS -->
+                <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 md:p-8 shadow-xl">
+                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-dark-800">
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-2xl">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">Aplicaciones y Herramientas</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">Canva Pro</span>
+                            <span class="text-brand-400 text-sm mt-1">Invitación: $49 | 1m: $75 | 3m: $180 | 6m: $250 | Anual: $299</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">ChatGPT Plus</span><span class="text-brand-400 font-bold">$190</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">Duolingo Plus</span><span class="text-brand-400 font-bold">$74</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">Microsoft 365 / Office</span>
+                            <span class="text-brand-400 text-sm mt-1">1m (5 disp): $112 | Anual: $924</span>
+                        </li>
+                        <li class="flex flex-col catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">Picsart Pro</span>
+                            <span class="text-brand-400 text-sm mt-1">Completa: $79 | Familiar: $89</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">CapCut Pro (1 mes / completa)</span><span class="text-brand-400 font-bold">$149</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item border-b border-dark-800/50 pb-3">
+                            <span class="text-gray-300 font-medium">Adobe Express Premium (1m / 1 disp)</span><span class="text-brand-400 font-bold">$69</span>
+                        </li>
+                        <li class="flex flex-col sm:flex-row justify-between catalog-item pb-1">
+                            <span class="text
