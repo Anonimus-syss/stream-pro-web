@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stream Pro - Catálogo Oficial</title>
+<title>Chars Stream Pro - Catálogo Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root { --bg: #090615; --card: #140f26; --text: #e2e8f0; --accent: #a855f7; --accent-glow: rgba(168, 85, 247, 0.4); --badge-bg: #221440; --badge-border: #442a80; }
@@ -68,7 +68,7 @@
   footer { text-align: center; padding: 2.5rem 1rem; color: #4e3f7a; font-size: 0.85rem; }
   .no-results { text-align: center; color: #94a3b8; padding: 2rem; display: none; }
   .whatsapp-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer; display: flex; flex-direction: column; align-items: center; animation: float 3s infinite; }
-  .harvis-wa-btn { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid #25D366; background: #090615; transition: 0.3s; }
+  .jazander-wa-btn { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid #25D366; background: #090615; transition: 0.3s; }
   .wa-label { background: rgba(0,0,0,0.8); color: white; padding: 5px 12px; border-radius: 12px; font-size: 0.75rem; margin-top: 8px; font-weight: 600; border: 1px solid #25D366; }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   
@@ -82,7 +82,7 @@
 </style>
 </head>
 <body>
-  <header>🛡️ Stream<span>Pro</span></header>
+  <header>🛡️ Chars Stream<span>Pro</span></header>
   <div class="hero">
     <h1>¿Qué servicio buscas hoy?</h1>
     <p>Calidad premium con garantía de entrega y soporte continuo.</p>
@@ -94,7 +94,7 @@
   </div>
   
   <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar streaming, trámites..." onkeyup="filterServices()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar streaming, trámites..." oninput="filterServices()">
   </div>
 
   <div class="carousel-section" id="promoCarousel">
@@ -137,30 +137,30 @@
     </div>
   </div>
 
-  <footer>© 2026 Stream Pro. Todos los derechos reservados.<br>Plataforma de alta fiabilidad en Veracruz, México.</footer>
+  <footer>© 2026 Chars Stream Pro. Todos los derechos reservados.<br>Plataforma de alta fiabilidad en Veracruz, México.</footer>
   
   <div class="whatsapp-container" onclick="openModal('waModal')">
-    <img src="harvis.jpg" class="harvis-wa-btn" alt="Harvis Bot" onerror="this.style.display='none'">
+    <img src="harvis.jpg" class="jazander-wa-btn" alt="Jazander Bot" onerror="this.style.display='none'">
     <span class="wa-label">Pedir servicio</span>
   </div>
 
-  <---------------------------------------- MODAL HISTORIA -->
+  <!-- MODAL HISTORIA -->
   <div class="modal-overlay" id="historyModal" onclick="closeOnOutside(event, 'historyModal')">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal('historyModal')">×</span>
-      <h2 style="text-align:center; color:#fff; margin-top:0;">STREAM PRO</h2>
+      <h2 style="text-align:center; color:#fff; margin-top:0;">CHARS STREAM PRO</h2>
       <p style="text-align:center; color:var(--accent); font-weight:600; font-size:0.85rem; margin-top:-10px;">CONECTA CON LO PRO</p>
       <img src="avatar.jpg" class="avatar-img" alt="Fundador" onerror="this.style.display='none'">
       <h3 style="color:#fff; text-align:center; margin: 12px 0 0;">Ing. Carlos</h3>
       <p style="color:var(--accent); text-align:center; margin: 0; font-size:0.9rem;">Arquitecto & Fundador</p>
       <div style="margin-top:1.5rem; font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
         <h3 style="color:var(--accent); margin-bottom:0.3rem;">Visión y Evolución</h3>
-        Nacido en un dispositivo Android en Veracruz y escalado mediante terminales de Linux y scripts automatizados, Stream Pro democratiza el acceso digital con atención 24/7. Seguimos creciendo integrando IA (HARVIS) para ofrecer el mejor servicio.
+        Nacido en un dispositivo Android en Veracruz y escalado mediante terminales de Linux y scripts automatizados, Chars Stream Pro democratiza el acceso digital con atención 24/7. Seguimos creciendo integrando IA (JAZANDER) para ofrecer el mejor servicio.
       </div>
     </div>
   </div>
 
-  <---------------------------------------- MODAL FAQ / GARANTÍA -->
+  <!-- MODAL FAQ / GARANTÍA -->
   <div class="modal-overlay" id="faqModal" onclick="closeOnOutside(event, 'faqModal')">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal('faqModal')">×</span>
@@ -176,7 +176,7 @@
     </div>
   </div>
 
-  <---------------------------------------- MODAL PIN MAYOREO -->
+  <!-- MODAL PIN MAYOREO -->
   <div class="modal-overlay" id="pinModal" onclick="closeOnOutside(event, 'pinModal')">
     <div class="modal-content" style="max-width: 350px; text-align:center;">
       <span class="close-btn" onclick="closeModal('pinModal')">×</span>
@@ -188,7 +188,7 @@
     </div>
   </div>
 
-  <---------------------------------------- MODAL WHATSAPP -->
+  <!-- MODAL WHATSAPP -->
   <div class="modal-overlay" id="waModal" onclick="closeOnOutside(event, 'waModal')">
     <div class="modal-content" style="max-width: 350px;">
       <span class="close-btn" onclick="closeModal('waModal')">×</span>
@@ -242,7 +242,7 @@
     if (c.includes("trámite")) return brandStyles.tramite; if (c.includes("salud")) return brandStyles.salud;
     if (c.includes("educación")) return brandStyles.edu; if (c.includes("auto")) return brandStyles.auto;
     if (c.includes("infonavit")) return brandStyles.casa; if (c.includes("negocio") || c.includes("mayoreo")) return brandStyles.negocio;
-    if (c.includes("harvis")) return brandStyles.ai; return brandStyles.def;
+    if (c.includes("jazander")) return brandStyles.ai; return brandStyles.def;
   }
   const fullData1 = [
     { c: "🎬 1. Plataformas de Streaming", i: [ 
@@ -403,8 +403,8 @@
       "Catálogo de Distribuidores (Mayoreo)|Protegido con PIN|Para clientes VIP y emprendedores. Toca este servicio para ingresar tu PIN y ver los precios ocultos.|🔒 ACCESO VIP",
       "Paneles de Venta Múltiple|Consultar precio|Inicia tu propio negocio administrando plataformas y clientes.|EMPRENDEDOR|SOPORTE PREMIUM"
     ]},
-    { c: "🤖 HARVIS | Inteligencia Artificial", i: [
-      "Asistencia Automatizada HARVIS|24/7|Consulta precios, disponibilidad, y orientación sobre servicios.|INNOVACIÓN",
+    { c: "🤖 JAZANDER | Inteligencia Artificial", i: [
+      "Asistencia Automatizada JAZANDER|24/7|Consulta precios, disponibilidad, y orientación sobre servicios.|INNOVACIÓN",
       "Implementación de IA para Negocios|Consultar|Desarrollamos bots personalizados para tu negocio.|DESARROLLO|IA"
     ]}
   ];
