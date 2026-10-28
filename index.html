@@ -6,108 +6,190 @@
 <title>Stream Pro - Catálogo Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #0b0f19; --card: #151b2b; --text: #e2e8f0; --accent: #a855f7; }
-  body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 90px; }
-  header { background: rgba(21, 27, 43, 0.95); backdrop-filter: blur(10px); padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+  :root { --bg: #090615; --card: #140f26; --text: #e2e8f0; --accent: #a855f7; --accent-glow: rgba(168, 85, 247, 0.4); --badge-bg: #221440; --badge-border: #442a80; }
+  body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 100px; }
+  header { background: rgba(20, 15, 38, 0.95); backdrop-filter: blur(10px); padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.6); text-align: center; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
   header span { color: var(--accent); }
-  .hero { text-align: center; padding: 2rem 1rem 1rem; }
-  .hero p { color: #94a3b8; font-size: 0.95rem; margin-top: 0.5rem; }
+  .hero { text-align: center; padding: 2rem 1rem 1.5rem; }
+  .hero h1 { margin: 0; font-size: 1.8rem; color: #fff; }
+  .hero p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1rem; }
+  .history-btn { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 20px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+  .history-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 10px var(--accent-glow); }
   .search-container { max-width: 800px; margin: 0 auto 1.5rem; padding: 0 1rem; }
-  .search-bar { width: 100%; padding: 12px 20px; border-radius: 30px; border: 1px solid #2d3748; background: #1e293b; color: white; font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
-  .search-bar:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(168, 85, 247, 0.3); }
+  .search-bar { width: 100%; padding: 14px 24px; border-radius: 30px; border: 1.5px solid #2d1d4c; background: #1a1235; color: white; font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
+  .search-bar:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
   .container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
-  .category { background: var(--card); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
-  .category h2 { margin-top: 0; border-bottom: 2px solid #2d3748; padding-bottom: 0.8rem; color: #fff; font-size: 1.25rem; font-weight: 600; }
-  
-  /* Estilos del Acordeón */
-  .item { padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; background: #111724; cursor: pointer; border: 1px solid transparent; transition: background 0.2s; user-select: none; }
-  .item:hover { background: #1e293b; border-color: #2d3748; }
-  .item-header { display: flex; justify-content: space-between; align-items: center; }
-  .item-info { display: flex; flex-direction: column; gap: 0.3rem; }
-  .item-title { font-weight: 600; font-size: 1.05rem; color: #f8fafc; }
-  .item-price { color: var(--accent); font-size: 0.95rem; font-weight: 600; }
-  .chevron { font-size: 0.8rem; color: #64748b; transition: transform 0.3s; }
+  .category { background: var(--card); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid #1f143a; }
+  .category h2 { margin-top: 0; border-bottom: 2px solid #2e1e50; padding-bottom: 0.8rem; color: #fff; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; }
+  .item { padding: 1rem; border-radius: 12px; margin-bottom: 0.8rem; background: #0e0a1e; cursor: pointer; border: 1px solid #1b1338; transition: transform 0.2s, border-color 0.2s; user-select: none; }
+  .item:hover { transform: translateY(-2px); border-color: var(--accent); background: #130d2a; }
+  .item-header { display: flex; gap: 1rem; align-items: center; position: relative; }
+  .logo-container { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.4rem; flex-shrink: 0; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+  .item-info { display: flex; flex-direction: column; gap: 0.2rem; flex-grow: 1; }
+  .item-title { font-weight: 600; font-size: 1.05rem; color: #f8fafc; display: flex; align-items: center; gap: 0.5rem; }
+  .item-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; }
+  .badge-container { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .badge { font-size: 0.65rem; font-weight: 600; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--badge-border); background: var(--badge-bg); color: #c084fc; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge.garantia { border-color: #10b981; background: rgba(16, 185, 129, 0.1); color: #34d399; }
+  .badge.acceso { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); color: #60a5fa; }
+  .badge.renovable { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
+  .chevron { font-size: 0.8rem; color: #4e3f7a; transition: transform 0.3s; margin-left: auto; padding-left: 0.5rem; }
   .item.open .chevron { transform: rotate(180deg); color: var(--accent); }
   .item-details { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
-  .item.open .item-details { max-height: 300px; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #1e293b; }
-
-  .fab { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; border-radius: 50px; padding: 14px 24px; text-decoration: none; font-weight: 600; display: flex; align-items: center; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); z-index: 1000; }
-  footer { text-align: center; padding: 2rem 1rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
+  .item.open .item-details { max-height: 400px; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #221544; }
+  .benefits-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .benefits-list li { display: flex; align-items: center; gap: 0.4rem; color: #cbd5e1; }
+  .benefits-list li::before { content: "⚡"; font-size: 0.8rem; color: var(--accent); }
+  .fab { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; border-radius: 50px; padding: 14px 24px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 1000; }
+  footer { text-align: center; padding: 2.5rem 1rem; color: #4e3f7a; font-size: 0.85rem; border-top: 1px solid #140f26; margin-top: 2rem; }
   .no-results { text-align: center; color: #94a3b8; padding: 2rem; display: none; }
+  
+  /* Modal de Historia */
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; padding: 1rem; backdrop-filter: blur(8px); }
+  .modal-content { background: var(--card); border: 1px solid #442a80; border-radius: 20px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+  .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #94a3b8; transition: color 0.2s; }
+  .close-btn:hover { color: #fff; }
+  .history-section { margin-top: 1.5rem; text-align: left; }
+  .history-section h3 { color: var(--accent); font-size: 1.05rem; margin-bottom: 0.3rem; margin-top: 1.2rem; }
+  .history-section p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; margin: 0; }
 </style>
 </head>
 <body>
-  <header>⚡ Stream<span>Pro</span></header>
-  <div class="hero"><p>Toca cualquier servicio para ver sus beneficios y detalles.</p></div>
+  <header>🛡️ Stream<span>Pro</span></header>
+  <div class="hero">
+    <h1>¿Qué servicio buscas hoy?</h1>
+    <p>Calidad premium con garantía de entrega y soporte continuo.</p>
+    <button onclick="openHistory()" class="history-btn">📖 Nuestra Historia</button>
+  </div>
   <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar servicio (ej. Netflix, VPN)..." onkeyup="filterServices()">
+    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar streaming, trámites, herramientas..." onkeyup="filterServices()">
   </div>
   <div class="container" id="catalog"></div>
   <div class="no-results" id="noResults">No se encontraron servicios.</div>
-  <footer>© 2026 Stream Pro. Todos los derechos reservados.</footer>
+  <footer>© 2026 Stream Pro. Todos los derechos reservados.<br>Plataforma de alta fiabilidad en Veracruz, México.</footer>
   <a href="https://wa.me/522284075445?text=Hola,%20me%20interesa%20un%20servicio%20de%20tu%20catálogo" class="fab">💬 Pedir por WhatsApp</a>
+  <---------------------------------------- Modal de Historia HTML -->
+  <div class="modal-overlay" id="historyModal" onclick="closeOnOutside(event)">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeHistory()">×</span>
+      <h2 style="text-align:center; color:#fff; margin-top:0; font-size:1.6rem; letter-spacing:1px;">STREAM PRO</h2>
+      <p style="text-align:center; color:var(--accent); font-weight:600; font-size:0.85rem; margin-top:-10px;">CONECTA CON LO PRO. TU MUNDO DIGITAL</p>
+      
+      <div class="history-section">
+        <h3>01. El Origen</h3>
+        <p>Nacido en un dispositivo Android en Veracruz, México. El objetivo desde el primer día fue democratizar el acceso a los mejores servicios digitales mediante una atención confiable.</p>
+        
+        <h3>02. Evolución Técnica (Termux / CLI)</h3>
+        <p>Para escalar, la infraestructura integró el poder de la terminal de Linux mediante Termux. Esto permitió gestionar conexiones SSH y automatizar scripts para mayor seguridad operativa.</p>
+        
+        <h3>03. Transparencia y Garantía</h3>
+        <p>Asignamos perfiles exclusivos con PIN único y políticas estrictas de no compartir credenciales para evitar bloqueos. Garantizamos atención 24/7 y 30 días de respaldo continuo.</p>
+        
+        <h3>04. Más allá del Streaming</h3>
+        <p>Nuestra visión se expandió hacia la automatización corporativa, el desarrollo web, auditorías de ciberseguridad y la creación de bots empresariales.</p>
+        
+        <h3>05. El Futuro Integrado con IA</h3>
+        <p>Seguimos creciendo integrando herramientas de Inteligencia Artificial para ofrecer un ecosistema multiplataforma robusto para usuarios y Pymes.</p>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    const data = [
-      { c: "🎬 Plataformas de Streaming", i: [ 
-        "Netflix Estándar (anuncios)|$59|Cuenta básica para 1 dispositivo. Incluye pausas comerciales durante la reproducción.", 
-        "Netflix Premium|1 mes: $95|Resolución 4K Ultra HD. Hasta 4 pantallas simultáneas sin interrupciones comerciales.", 
-        "Disney+ Premium|1 mes: $99 | 2 meses: $149|Incluye catálogo completo de Disney, Marvel, Star Wars, Pixar y deportes de ESPN en 4K.", 
-        "Max Platino|1 mes: $92 | 2 meses: $115 | 3 meses: $149", 
-        "Prime Video|1 mes: $56 | 2 meses: $99 | Anual: $150", 
-        "ViX Premium|1 mes: $65 | 2 meses: $89 | 3 meses: $130 | 6 meses: $179 | Anual: $199", 
-        "Paramount+|$49", "Crunchyroll|1 mes: $71 | 2 meses: $97 | Anual: $165", "Plex|$89", "Viki Rakuten|$77", "Universal+|$127", "Peacock Premium|1 mes / cuenta completa: $69", "Edye|1 mes / cuenta completa: $39", "Pornhub Premium|1 mes: $55", "Brazzers Premium|Perfil / 1 mes: $55", "IPTV|$75" ] },
-      { c: "⚽ Deportes", i: [ "DAZN|$125", "FOX One|$127", "NBA League Pass|1 mes / 1 dispositivo: $99", "NBA League Pass|1 mes / hasta 3 dispositivos: $149" ] },
-      { c: "🎵 Música y Video", i: [ "Apple TV+|1 mes: $99 | 3 meses: $148", "YouTube Premium|1 mes: $79 | 2 meses: $159 | 3 meses: $180 | Familiar: $200|Videos sin anuncios, reproducción en segundo plano y acceso a YouTube Music.", "Spotify Premium|1 mes: $69 | 2 meses: $138 | 3 meses: $165 | Familiar: $199|Música sin interrupciones, saltos ilimitados y modo offline para escuchar sin internet.", "Deezer|1 mes: $69 | 2 meses: $138" ] },
-      { c: "🪄 Aplicaciones y Herramientas", i: [ "Canva Pro|1 mes: $75 | 2 meses: $149 | 3 meses: $180 | 6 meses: $250 | Anual: $299 | Acceso por invitación 1 mes: $49|Acceso a todas las plantillas premium, herramientas de Inteligencia Artificial y removedor de fondo.", "ChatGPT Plus|$190", "Duolingo Plus|$74", "Microsoft 365|1 mes / hasta 5 dispositivos: $112 | Microsoft Office anual: $924", "Picsart Pro|Cuenta completa / 1 mes: $79", "Picsart|Acceso familiar / 1 mes: $89", "CapCut Pro|Cuenta completa / 1 mes: $149", "Adobe Express Premium|1 mes / 1 dispositivo: $69", "Configuración y creación asistida de correo Outlook/Hotmail|Desde $25" ] },
-      { c: "🔐 VPN y Seguridad Digital", i: [ "PureVPN|1 mes: $99", "NordVPN|1 mes / 1 dispositivo: $59 | 3 meses / 1 dispositivo: $89 | 3 meses / cuenta completa: $199", "ExpressVPN|1 mes / celular: $79 | 1 mes / PC: $99 | Anual / celular: $249 | Anual / PC: $299", "Bitdefender VPN Premium|1 mes / 1 dispositivo: $49 | 1 mes / cuenta completa: $79", "Avira Phantom VPN Premium|3 meses / 1 dispositivo: $69 | 3 meses / cuenta completa: $99", "Surfshark VPN Premium|2 meses / 1 dispositivo: $79" ] },
-      { c: "📄 Trámites, Consultas e Identidad Digital", i: [ "Constancia de Situación Fiscal / RFC con IDCIF - Consulta y descarga|$49", "RFC - Copia informativa / reproducción de referencia|$69", "RFC de Persona Física - Apoyo en trámite de primera inscripción (1 QR)|$155", "RFC verificable - Consulta y obtención de constancia con QR|$150", "RFC - Gestión para obtención de constancia oficial|$270", "Consulta de datos mediante CURP o RFC|$35", "CURP - Consulta y descarga|$15", "CURP - Copia informativa / reproducción de referencia|$45", "Edición y corrección de formato digital de documentos no oficiales|$180", "Gestión de Constancia de Concubinato|$260", "Constancia de Inexistencia de Registro de Matrimonio - Gestión|$250", "Localización de AFORE|$35", "NSS actualizado - 2 hojas|$60", "Constancia de Semanas Cotizadas en el IMSS|$80", "Constancia de Vigencia de Derechos del IMSS|$75", "Constancia de No Derechohabiencia del IMSS|$60", "Consulta / gestión de Recibo CFE actualizado|$35", "Constancia de No Deudor Alimentario Moroso Federal/CDMX|$65", "No Deudor Alimentario Moroso - Estado de México, copia informativa|$60", "Antecedentes No Penales Estatal - Gestión de constancia|$70", "Antecedentes No Penales Federal verificable - Gestión|$95", "Certificado de Bautizo - Gestión de constancia|$140", "Constancia de Pláticas de Bautizo - Gestión|$150", "Certificados Laborales - Consulta / gestión|$70", "Acta de Nacimiento oficial - Gestión de obtención|$99", "Acta de Matrimonio oficial - Gestión de obtención|$119", "Acta de Divorcio oficial - Gestión de obtención|$129", "Acta de Defunción oficial - Gestión de obtención|$99", "Copia informativa de Acta / reproducción de referencia|$75" ] },
-      { c: "🩺 Servicios Médicos, Laboratorio y Gestión de Salud", i: [ "Gestión para consulta y Certificado Médico en consultorio autorizado|$65", "Gestión de Ultrasonido 4D - Salud Digna|$115", "Gestión de Prueba de Embarazo en Sangre|$60", "Gestión de Prueba COVID-19 - IMSS / Salud Digna / Chopo|$70", "Gestión de Prueba de Dengue|$70", "Gestión de Prueba Antidoping - Salud Digna|$70", "Apoyo para solicitud u orden de Estudios de Laboratorio IMSS|$75", "Gestión de valoración en Cardiología|$75", "Apoyo para Referencia / Contrarreferencia IMSS|$75", "Orientación para Triage y Atención de Urgencias|$75", "Orientación y gestión para Atención de Urgencias ISSSTE|$85", "Orientación y seguimiento de trámite de Incapacidad ISSSTE|$85", "Gestión de consulta médica para valoración y receta|$65", "Orientación y seguimiento de trámite de Incapacidad IMSS|$80", "Orientación / gestión para Prueba de Influenza IMSS|$65" ] },
-      { c: "🎓 Educación, Certificados y Registros", i: [ "Registro y acompañamiento INEA|$69", "Certificado de Primaria INEA - Orientación y gestión|$99", "Certificado de Secundaria INEA - Orientación y gestión|$99", "Certificado / duplicado de Preparatoria - Gestión|$149 + derechos oficiales, si aplican", "Consulta de Título Profesional|$49", "Consulta de Cédula Profesional|$49" ] },
-      { c: "🚗 Servicios para Automóviles", i: [ "Gestión de Permiso Provisional para Circular sin Placas - Guerrero|$120 + derechos oficiales" ] },
-      { c: "🏠 INFONAVIT", i: [ "Consulta de Historial Laboral INFONAVIT|$49", "Consulta de Datos de Cuenta INFONAVIT|$49", "Consulta de Saldo INFONAVIT|$35", "Apoyo para Registro de Mi Cuenta INFONAVIT|$69", "Consulta de Historial de Movimientos / Saldos INFONAVIT|$49", "Orientación para recuperación o cambio de clave de acceso INFONAVIT|$69", "Apoyo para desbloqueo y recuperación de acceso INFONAVIT|Consultar precio" ] }
-    ];
+<script>
+  function openHistory() { document.getElementById('historyModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeHistory() { document.getElementById('historyModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+  function closeOnOutside(e) { if(e.target.id === 'historyModal') closeHistory(); }
 
-    function toggleDetails(element) {
-      element.classList.toggle('open');
-    }
+  const brandStyles = {
+    "netflix": { bg: "linear-gradient(135deg, #e50914, #800000)", char: "N" }, "disney": { bg: "linear-gradient(135deg, #001034, #0072d2)", char: "D+" },
+    "max": { bg: "linear-gradient(135deg, #002be7, #00125e)", char: "M" }, "prime": { bg: "linear-gradient(135deg, #00a8e1, #1a2332)", char: "P" },
+    "vix": { bg: "linear-gradient(135deg, #ff4500, #8b1e00)", char: "V" }, "paramount": { bg: "linear-gradient(135deg, #0054ff, #002266)", char: "P+" },
+    "crunchy": { bg: "linear-gradient(135deg, #f47521, #cb5200)", char: "C" }, "youtube": { bg: "linear-gradient(135deg, #ff0000, #b30000)", char: "YT" },
+    "spotify": { bg: "linear-gradient(135deg, #1ed760, #136a30)", char: "S" }, "canva": { bg: "linear-gradient(135deg, #00c4cc, #7d2ae8)", char: "C" },
+    "chatgpt": { bg: "linear-gradient(135deg, #10a37f, #065440)", char: "AI" }, "duolingo": { bg: "linear-gradient(135deg, #58cc02, #328500)", char: "D" },
+    "microsoft": { bg: "linear-gradient(135deg, #00a4ef, #f25022)", char: "M" }, "picsart": { bg: "linear-gradient(135deg, #ff007f, #7f00ff)", char: "P" },
+    "capcut": { bg: "linear-gradient(135deg, #000000, #2b2b2b)", char: "Cc" }, "adobe": { bg: "linear-gradient(135deg, #ff0000, #4b0000)", char: "A" },
+    "nordvpn": { bg: "linear-gradient(135deg, #4682b4, #1e3f66)", char: "N" }, "expressvpn": { bg: "linear-gradient(135deg, #e71939, #8c0c1b)", char: "E" },
+    "tramite": { bg: "linear-gradient(135deg, #8b5cf6, #3b0764)", char: "📄" }, "salud": { bg: "linear-gradient(135deg, #10b981, #064e3b)", char: "🩺" },
+    "edu": { bg: "linear-gradient(135deg, #f59e0b, #78350f)", char: "🎓" }, "auto": { bg: "linear-gradient(135deg, #3b82f6, #1e3a8a)", char: "🚗" },
+    "casa": { bg: "linear-gradient(135deg, #ec4899, #701a75)", char: "🏠" }, "def": { bg: "linear-gradient(135deg, #a855f7, #581c87)", char: "⭐" }
+  };
+  function getBrandConfig(title, categoryName) {
+    let t = title.toLowerCase(), c = categoryName.toLowerCase();
+    if (t.includes("netflix")) return brandStyles.netflix; if (t.includes("disney")) return brandStyles.disney;
+    if (t.includes("max")) return brandStyles.max; if (t.includes("prime")) return brandStyles.prime;
+    if (t.includes("vix")) return brandStyles.vix; if (t.includes("paramount")) return brandStyles.paramount;
+    if (t.includes("crunchy")) return brandStyles.crunchy; if (t.includes("youtube")) return brandStyles.youtube;
+    if (t.includes("spotify")) return brandStyles.spotify; if (t.includes("canva")) return brandStyles.canva;
+    if (t.includes("chatgpt")) return brandStyles.chatgpt; if (t.includes("duolingo")) return brandStyles.duolingo;
+    if (t.includes("microsoft") || t.includes("office")) return brandStyles.microsoft; if (t.includes("picsart")) return brandStyles.picsart;
+    if (t.includes("capcut")) return brandStyles.capcut; if (t.includes("adobe")) return brandStyles.adobe;
+    if (t.includes("nord")) return brandStyles.nordvpn; if (t.includes("express")) return brandStyles.expressvpn;
+    if (c.includes("trámite")) return brandStyles.tramite; if (c.includes("salud") || c.includes("médic")) return brandStyles.salud;
+    if (c.includes("educ")) return brandStyles.edu; if (c.includes("auto")) return brandStyles.auto;
+    if (c.includes("infonavit") || c.includes("casa")) return brandStyles.casa; return brandStyles.def;
+  }
+  const data1 = [
+    { c: "🎬 Plataformas de Streaming", i: [ "Netflix Estándar (anuncios)|$59|Cuenta básica para 1 dispositivo. Incluye pausas comerciales durante la reproducción.|GARANTÍA 30 DÍAS|PERFIL COMPARTIDO|ENTREGA INMEDIATA", "Netflix Premium|1 mes: $95|Resolución 4K Ultra HD. Hasta 4 pantallas simultáneas sin interrupciones comerciales.|GARANTÍA 30 DÍAS|4 PANTALLAS|SOPORTE 24/7", "Disney+ Premium|1 mes: $99 | 2 meses: $149|Incluye catálogo completo de Disney, Marvel, Star Wars, Pixar y deportes de ESPN en 4K.|GARANTÍA 30 DÍAS|SOPORTE COMPLETO|RENOVABLE", "Max Platino|1 mes: $92 | 2 meses: $115 | 3 meses: $149|Catalogo Premium de Max, HBO y series exclusivas en excelente resolución.|GARANTÍA 30 DÍAS|PERFIL COMPARTIDO|RENOVABLE", "Prime Video|1 mes: $56 | 2 meses: $99 | Anual: $150|Disfruta de las mejores películas y series con envíos gratis en Amazon.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|MULTIDISPOSITIVO", "ViX Premium|1 mes: $65 | 2 meses: $89 | 3 meses: $130 | 6 meses: $179 | Anual: $199|Acceso completo a telenovelas, películas y eventos deportivos exclusivos.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|RENOVABLE", "Paramount+|$49|Películas, series exclusivas y deportes en directo.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|SOPORTE COMPLETO", "Crunchyroll|1 mes: $71 | 2 meses: $97 | Anual: $165|Todo el catálogo de anime sin anuncios, subtitulado y en alta definición.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|RENOVABLE", "Plex|$89|Organización de tus contenidos multimedia con transmisión premium.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|MULTIDISPOSITIVO", "Viki Rakuten|$77|El mejor entretenimiento asiático: dramas, películas y shows.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|SOPORTE CONTINUO", "Universal+|$127|Grandes series, películas y producciones internacionales de primer nivel.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "Peacock Premium|1 mes / cuenta completa: $69|Transmisión de grandes producciones, películas taquilleras y eventos en vivo.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Edye|1 mes / cuenta completa: $39|Entretenimiento infantil, seguro, educativo y sin comerciales.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|RENOVABLE", "Pornhub Premium|1 mes: $55|Acceso a contenido exclusivo en la más alta resolución.|PRIVACIDAD|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "Brazzers Premium|Perfil / 1 mes: $55|Contenido premium de entretenimiento privado y exclusivo.|PRIVACIDAD|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "IPTV|$75|Acceso a miles de canales de televisión en vivo, películas y series.|GARANTÍA 30 DÍAS|MULTIDISPOSITIVO|SOPORTE 24/7" ] },
+    { c: "⚽ Deportes", i: [ "DAZN|$125|La mayor plataforma de deportes en vivo y bajo demanda.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|ENTREGA INMEDIATA", "FOX One|$127|Transmisión de los canales de Fox Sports y programación especial.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|ENTREGA INMEDIATA", "NBA League Pass|1 mes / 1 dispositivo: $99|Disfruta de todos los partidos de la temporada en vivo y en HD.|GARANTÍA 30 DÍAS|1 DISPOSITIVO|SOPORTE CONTINUO", "NBA League Pass|1 mes / hasta 3 dispositivos: $149|Acceso completo para múltiples pantallas.|GARANTÍA 30 DÍAS|HASTA 3 PANTALLAS|RENOVABLE" ] },
+    { c: "🎵 Música y Video", i: [ "Apple TV+|1 mes: $99 | 3 meses: $148|Historias originales de los creadores más brillantes del cine y la televisión.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|RENOVABLE", "YouTube Premium|1 mes: $79 | 2 meses: $159 | 3 meses: $180 | Familiar: $200|Videos sin anuncios, reproducción en segundo plano y acceso a YouTube Music.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|RENOVABLE", "Spotify Premium|1 mes: $69 | 2 meses: $138 | 3 meses: $165 | Familiar: $199|Música sin interrupciones, saltos ilimitados y modo offline para escuchar sin internet.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|RENOVABLE", "Deezer|1 mes: $69 | 2 meses: $138|Transmisión de millones de canciones sin anuncios y en excelente calidad.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|SOPORTE CONTINUO" ] },
+    { c: "🪄 Aplicaciones y Herramientas", i: [ "Canva Pro|1 mes: $75 | 2 meses: $149 | 3 meses: $180 | 6 meses: $250 | Anual: $299 | Acceso por invitación 1 mes: $49|Acceso a todas las plantillas premium, herramientas de Inteligencia Artificial y removedor de fondo.|GARANTÍA 30 DÍAS|DISEÑO COMPLETO|MULTIDISPOSITIVO", "ChatGPT Plus|$190|Acceso prioritario a GPT-4, respuestas rápidas y nuevas funciones inteligentes.|GARANTÍA 30 DÍAS|PRODUCTIVIDAD|INTELIGENCIA ARTIFICIAL", "Duolingo Plus|$74|Aprende idiomas sin anuncios, con vidas ilimitadas y pruebas ilimitadas.|GARANTÍA 30 DÍAS|EDUCACIÓN|ENTREGA INMEDIATA", "Microsoft 365|1 mes / hasta 5 dispositivos: $112 | Microsoft Office anual: $924|Paquete completo de Word, Excel, PowerPoint y 1 TB de almacenamiento en la nube.|GARANTÍA 30 DÍAS|5 DISPOSITIVOS|RENOVABLE", "Picsart Pro|Cuenta completa / 1 mes: $79|Edición avanzada de fotografías y diseño con recursos premium ilimitados.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Picsart|Acceso familiar / 1 mes: $89|Disfruta de las ventajas dePicsart Pro de forma compartida.|GARANTÍA 30 DÍAS|FAMILIAR|SOPORTE CONTINUO", "CapCut Pro|Cuenta completa / 1 mes: $149|Edición de video profesional con efectos, plantillas y herramientas IA exclusivas.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Adobe Express Premium|1 mes / 1 dispositivo: $69|Crea contenido extraordinario de forma rápida con acceso a miles de recursos de Adobe.|GARANTÍA 30 DÍAS|1 DISPOSITIVO|RENOVABLE", "Configuración y creación asistida de correo Outlook/Hotmail|Desde $25|Creación y ajuste personalizado de cuentas electrónicas con seguridad avanzada.|GESTIONADA|CONFIGURADO" ] },
+    { c: "🔐 VPN y Seguridad Digital", i: [ "PureVPN|1 mes: $99|Protege tu privacidad y cifra tu conexión con velocidad excelente.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|SOPORTE CONTINUO", "NordVPN|1 mes / 1 dispositivo: $59 | 3 meses / 1 dispositivo: $89 | 3 meses / cuenta completa: $199|La red privada virtual más segura y veloz para tus dispositivos.|GARANTÍA 30 DÍAS|SEGURIDAD|RENOVABLE", "ExpressVPN|1 mes / celular: $79 | 1 mes / PC: $99 | Anual / celular: $249 | Anual / PC: $299|Seguridad excelente y desbloqueo de contenidos de forma inmediata.|GARANTÍA 30 DÍAS|VELOCIDAD|RENOVABLE", "Bitdefender VPN Premium|1 mes / 1 dispositivo: $49 | 1 mes / cuenta completa: $79|Protección avanzada contra amenazas y navegación 100% privada.|GARANTÍA 30 DÍAS|SEGURIDAD|ENTREGA INMEDIATA", "Avira Phantom VPN Premium|3 meses / 1 dispositivo: $69 | 3 meses / cuenta completa: $99|Navegación segura y anónima con límites ilimitados.|GARANTÍA|SOPORTE CONTINUO|MULTIDISPOSITIVO", "Surfshark VPN Premium|2 meses / 1 dispositivo: $79|Seguridad avanzada sin límite de pantallas para todos tus dispositivos.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|RENOVABLE" ] }
+  ];
+  const data2 = [
+    { c: "📄 Trámites, Consultas e Identidad Digital", i: [ "Constancia de Situación Fiscal / RFC con IDCIF - Consulta y descarga|$49|Obtención rápida de tu constancia actualizada directamente del SAT.|TRAMITADO|SEGURO", "RFC - Copia informativa / reproducción de referencia|$69|Generación de referencia informativa de tu RFC.", "RFC de Persona Física - Apoyo en trámite de primera inscripción (1 QR)|$155|Gestión paso a paso de tu inscripción inicial.", "RFC verificable - Consulta y obtención de constancia con QR|$150|Tu constancia 100% válida con lector de código QR.", "RFC - Gestión para obtención de constancia oficial|$270|Tramitamos tu documento oficial sin complicaciones.", "Consulta de datos mediante CURP o RFC|$35|Revisión rápida de tus registros de identidad.", "CURP - Consulta y descarga|$15|Tu Clave Única de Registro de Población descargada al instante.", "CURP - Copia informativa / reproducción de referencia|$45|Formato digital rápido de referencia.", "Edición y corrección de formato digital de documentos no oficiales|$180|Ajustes visuales y correcciones de documentos digitales.", "Gestión de Constancia de Concubinato|$260|Tramitación y obtención de documento oficial.", "Constancia de Inexistencia de Registro de Matrimonio - Gestión|$250|Trámite legal de inexistencia.", "Localización de AFORE|$35|Ubicamos la administradora de tus ahorros laborales.", "NSS actualizado - 2 hojas|$60|Tu Número de Seguro Social en formato oficial.", "Constancia de Semanas Cotizadas en el IMSS|$80|Reporte detallado de tu historial laboral.", "Constancia de Vigencia de Derechos del IMSS|$75|Comprobante de acceso a servicios médicos.", "Constancia de No Derechohabiencia del IMSS|$60|Documento oficial de no vigencia.", "Consulta / gestión de Recibo CFE actualizado|$35|Tu recibo de luz digital listo.", "Constancia de No Deudor Alimentario Moroso Federal/CDMX|$65|Trámite de no antecedentes en padrón alimentario.", "No Deudor Alimentario Moroso - Estado de México, copia informativa|$60|Consulta de deudor.", "Antecedentes No Penales Estatal - Gestión de constancia|$70|Tu documento con validez oficial del estado.", "Antecedentes No Penales Federal verificable - Gestión|$95|Certificado federal oficial.", "Certificado de Bautizo - Gestión de constancia|$140|Obtención oficial de tu registro de fe.", "Constancia de Pláticas de Bautizo - Gestión|$150|Trámite ágil de constancia.", "Certificados Laborales - Consulta / gestión|$70|Obtención rápida de tus cartas.", "Acta de Nacimiento oficial - Gestión de obtención|$99|Tu acta registrada, válida para cualquier trámite.", "Acta de Matrimonio oficial - Gestión de obtención|$119|Registro civil oficial.", "Acta de Divorcio oficial - Gestión de obtención|$129|Documento con validez legal.", "Acta de Defunción oficial - Gestión de obtención|$99|Gestión oficial y respetuosa.", "Copia informativa de Acta / reproducción de referencia|$75|Consulta rápida y de apoyo." ] },
+    { c: "🩺 Servicios Médicos, Laboratorio y Gestión de Salud", i: [ "Gestión para consulta y Certificado Médico en consultorio autorizado|$65|Certificado ágil para escuela o trabajo.", "Gestión de Ultrasonido 4D - Salud Digna|$115|Citas y gestión para tu ultrasonido.", "Gestión de Prueba de Embarazo en Sangre|$60|Atención rápida para estudios clínicos.", "Gestión de Prueba COVID-19 - IMSS / Salud Digna / Chopo|$70|Programación de pruebas rápidas y PCR.", "Gestión de Prueba de Dengue|$70|Seguimiento ágil en laboratorio.", "Gestión de Prueba Antidoping - Salud Digna|$70|Estudio clínico seguro y validado.", "Apoyo para solicitud u orden de Estudios de Laboratorio IMSS|$75|Gestión asistida de documentos médicos.", "Gestión de valoración en Cardiología|$75|Citas y trámites especializados.", "Apoyo para Referencia / Contrarreferencia IMSS|$75|Movimiento entre unidades médicas.", "Orientación para Triage y Atención de Urgencias|$75|Guía rápida para ingreso en urgencias.", "Orientación y gestión para Atención de Urgencias ISSSTE|$85|Apoyo en situaciones urgentes.", "Orientación y seguimiento de trámite de Incapacidad ISSSTE|$85|Gestión ágil de reposos laborales.", "Gestión de consulta médica para valoración y receta|$65|Atención personalizada y segura.", "Orientación y seguimiento de trámite de Incapacidad IMSS|$80|Incapacidades laborales.", "Orientación / gestión para Prueba de Influenza IMSS|$65|Estudios ágiles." ] },
+    { c: "🎓 Educación, Certificados y Registros", i: [ "Registro y acompañamiento INEA|$69|Inscripción y seguimiento de estudios básicos.", "Certificado de Primaria INEA - Orientación y gestión|$99|Documento oficial de primaria.", "Certificado de Secundaria INEA - Orientación y gestión|$99|Tu certificado de secundaria oficial.", "Certificado / duplicado de Preparatoria - Gestión|$149 + derechos oficiales, si aplican|Duplicados y validaciones oficiales.", "Consulta de Título Profesional|$49|Búsqueda oficial de títulos.", "Consulta de Cédula Profesional|$49|Verificación oficial de cédula." ] },
+    { c: "🚗 Servicios para Automóviles", i: [ "Gestión de Permiso Provisional para Circular sin Placas - Guerrero|$120 + derechos oficiales|Tu permiso temporal válido y legal." ] },
+    { c: "🏠 INFONAVIT", i: [ "Consulta de Historial Laboral INFONAVIT|$49|Tu historial completo de relaciones laborales.", "Consulta de Datos de Cuenta INFONAVIT|$49|Detalles de tu cuenta e historial.", "Consulta de Saldo INFONAVIT|$35|Búsqueda rápida de tus ahorros.", "Apoyo para Registro de Mi Cuenta INFONAVIT|$69|Creación fácil de tu cuenta.", "Consulta de Historial de Movimientos / Saldos INFONAVIT|$49|Tus ahorros al día.", "Orientación para recuperación o cambio de clave de acceso INFONAVIT|$69|Acceso rápido a tu cuenta.", "Apoyo para desbloqueo y recuperación de acceso INFONAVIT|Consultar precio|Soluciones completas de acceso." ] }
+  ];
 
-    function renderCatalog(filterText = "") {
-      let html = "";
-      let hasResults = false;
-      const term = filterText.toLowerCase();
-
-      data.forEach(cat => {
-        let filteredItems = cat.i.filter(item => item.toLowerCase().includes(term));
-        if (filteredItems.length > 0) {
-          hasResults = true;
-          html += `<div class="category"><h2>${cat.c}</h2>`;
-          filteredItems.forEach(item => {
-            let p = item.split('|');
-            let desc = p[2] ? p[2] : "Toca el botón de WhatsApp abajo para consultar los beneficios, límites y requisitos de este servicio.";
-            html += `<div class="item" onclick="toggleDetails(this)">
-                      <div class="item-header">
-                        <div class="item-info">
-                          <div class="item-title">${p[0]}</div>
-                          <div class="item-price">${p[1]}</div>
-                        </div>
-                        <div class="chevron">▼</div>
-                      </div>
-                      <div class="item-details">${desc}</div>
-                    </div>`;
-          });
-          html += `</div>`;
-        }
-      });
-      document.getElementById('catalog').innerHTML = html;
-      document.getElementById('noResults').style.display = hasResults ? 'none' : 'block';
-    }
-
-    function filterServices() {
-      const input = document.getElementById('searchInput').value;
-      renderCatalog(input);
-    }
-    renderCatalog();
-  </script>
+  const fullData = data1.concat(data2);
+  function toggleDetails(element) { element.classList.toggle('open'); }
+  function renderCatalog(filterText = "") {
+    let html = "", hasResults = false;
+    const term = filterText.toLowerCase();
+    fullData.forEach(cat => {
+      let filteredItems = cat.i.filter(item => item.toLowerCase().includes(term));
+      if (filteredItems.length > 0) {
+        hasResults = true; html += `<div class="category"><h2>${cat.c}</h2>`;
+        filteredItems.forEach(item => {
+          let p = item.split('|'), brand = getBrandConfig(p[0], cat.c), desc = p[2] ? p[2] : "Toca el botón de WhatsApp abajo para consultar los beneficios, límites y requisitos de este servicio.";
+          let badgeHtml = "", benefitsHtml = "";
+          if (p.length > 3) {
+            badgeHtml += `<div class="badge-container">`;
+            for (let i = 3; i < p.length; i++) {
+              let badgeClass = "", tag = p[i].trim();
+              if (tag.includes("GARANTÍA") || tag.includes("PRIVACIDAD") || tag.includes("SEGURO") || tag.includes("TRAMITADO")) badgeClass = "garantia";
+              else if (tag.includes("COMPARTIDO") || tag.includes("COMPLETA") || tag.includes("DISPOSITIVO") || tag.includes("PANTALLA")) badgeClass = "acceso";
+              else if (tag.includes("RENOVABLE") || tag.includes("DISEÑO") || tag.includes("PRODUCTIVIDAD")) badgeClass = "renovable";
+              badgeHtml += `<span class="badge ${badgeClass}">${tag}</span>`; benefitsHtml += `<li>${tag}</li>`;
+            }
+            badgeHtml += `</div>`;
+          } else {
+            let catLow = cat.c.toLowerCase();
+            if (catLow.includes("trámite") || catLow.includes("salud") || catLow.includes("infonavit") || catLow.includes("educación") || catLow.includes("auto")) {
+              badgeHtml += `<div class="badge-container"><span class="badge garantia">OFICIAL</span><span class="badge acceso">GESTIONADO</span><span class="badge renovable">RÁPIDO</span></div>`;
+              benefitsHtml += `<li>Gestión Oficial</li><li>Soporte y Garantía</li><li>Entrega Digital</li>`;
+            } else {
+              badgeHtml += `<div class="badge-container"><span class="badge garantia">GARANTÍA 30 DÍAS</span><span class="badge acceso">ACCESO INMEDIATO</span><span class="badge renovable">SOPORTE</span></div>`;
+              benefitsHtml += `<li>Garantía de servicio</li><li>Entrega Inmediata</li><li>Soporte Incluido</li>`;
+            }
+          }
+          html += `<div class="item" onclick="toggleDetails(this)">
+                    <div class="item-header"><div class="logo-container" style="background: ${brand.bg};">${brand.char}</div>
+                    <div class="item-info"><div class="item-title">${p[0]}</div><div class="item-price">${p[1]}</div>${badgeHtml}</div>
+                    <div class="chevron">▼</div></div>
+                    <div class="item-details">${desc}<ul class="benefits-list" style="margin-top: 1rem;">${benefitsHtml}</ul></div>
+                  </div>`;
+        });
+        html += `</div>`;
+      }
+    });
+    document.getElementById('catalog').innerHTML = html;
+    document.getElementById('noResults').style.display = hasResults ? 'none' : 'block';
+  }
+  function filterServices() { const input = document.getElementById('searchInput').value; renderCatalog(input); }
+  renderCatalog();
+</script>
 </body>
 </html>
