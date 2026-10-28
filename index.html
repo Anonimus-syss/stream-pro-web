@@ -15,9 +15,23 @@
   .hero p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1rem; }
   .history-btn { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 20px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
   .history-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 10px var(--accent-glow); }
-  .search-container { max-width: 800px; margin: 0 auto 1.5rem; padding: 0 1rem; }
+  .search-container { max-width: 800px; margin: 0 auto 1rem; padding: 0 1rem; }
   .search-bar { width: 100%; padding: 14px 24px; border-radius: 30px; border: 1.5px solid #2d1d4c; background: #1a1235; color: white; font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
   .search-bar:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+  
+  /* ESTILOS DEL CARRUSEL DE OFERTAS */
+  .carousel-section { max-width: 800px; margin: 0 auto 1.5rem; padding: 0 1rem; }
+  .carousel-section h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem; }
+  .carousel { display: flex; overflow-x: auto; gap: 1rem; padding-bottom: 1rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel-card { flex: 0 0 82%; max-width: 280px; background: linear-gradient(145deg, #1f143a, #140f26); border: 1px solid #442a80; border-radius: 16px; padding: 1.5rem; scroll-snap-align: center; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+  .promo-badge { position: absolute; top: 12px; right: 12px; background: #ff0055; color: white; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; box-shadow: 0 2px 8px rgba(255,0,85,0.5); letter-spacing: 0.5px; }
+  .carousel-title { color: #fff; font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; line-height: 1.2; }
+  .carousel-desc { color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem; line-height: 1.4; }
+  .carousel-price { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+  .carousel-btn { display: block; width: 100%; background: var(--accent); color: white; text-align: center; padding: 10px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; box-shadow: 0 4px 10px var(--accent-glow); transition: transform 0.2s; font-family: 'Poppins', sans-serif; }
+  .carousel-btn:hover { transform: translateY(-2px); }
+
   .container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
   .category { background: var(--card); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid #1f143a; }
   .category h2 { margin-top: 0; border-bottom: 2px solid #2e1e50; padding-bottom: 0.8rem; color: #fff; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; }
@@ -44,7 +58,7 @@
   footer { text-align: center; padding: 2.5rem 1rem; color: #4e3f7a; font-size: 0.85rem; border-top: 1px solid #140f26; margin-top: 2rem; }
   .no-results { text-align: center; color: #94a3b8; padding: 2rem; display: none; }
   
-  /* Nuevo Botón Harvis-WhatsApp 3D */
+  /* Botón Harvis-WhatsApp 3D */
   .whatsapp-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer; display: flex; flex-direction: column; align-items: center; animation: float 3s ease-in-out infinite; }
   .harvis-wa-btn { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid #25D366; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); background: #090615; transition: transform 0.3s; }
   .harvis-wa-btn:hover { transform: scale(1.1); }
@@ -70,32 +84,64 @@
     <p>Calidad premium con garantía de entrega y soporte continuo.</p>
     <button onclick="openModal('historyModal')" class="history-btn">📖 Nuestra Historia</button>
   </div>
+  
   <div class="search-container">
     <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar streaming, trámites..." onkeyup="filterServices()">
   </div>
+
+  <---------------------------------------- CARRUSEL DE OFERTAS Y COMBOS -->
+  <div class="carousel-section" id="promoCarousel">
+    <h3>🔥 Ofertas Relámpago y Combos</h3>
+    <div class="carousel">
+      
+      <div class="carousel-card">
+        <div class="promo-badge">TU COMBO</div>
+        <h4 class="carousel-title">Prime Video + Apple TV</h4>
+        <p class="carousel-desc">Disfruta de 1 mes completo de ambas plataformas (1 Perfil). ¡Ideal para maratones!</p>
+        <div class="carousel-price">$99 MXN</div>
+        <button class="carousel-btn" onclick="openModal('waModal')">Lo quiero ahora</button>
+      </div>
+
+      <div class="carousel-card" style="background: linear-gradient(145deg, #102a43, #0a0f25); border-color: #2b4c7e;">
+        <div class="promo-badge" style="background: #3b82f6; box-shadow: 0 2px 8px rgba(59,130,246,0.5);">24 HORAS</div>
+        <h4 class="carousel-title">Disney+ y Fox One</h4>
+        <p class="carousel-desc">Acceso total durante 24 hrs. Todo el catálogo de Disney, Marvel y deportes.</p>
+        <div class="carousel-price">$19 MXN</div>
+        <button class="carousel-btn" style="background: #3b82f6; box-shadow: 0 4px 10px rgba(59,130,246,0.4);" onclick="openModal('waModal')">Actívalo ya</button>
+      </div>
+
+      <div class="carousel-card" style="background: linear-gradient(145deg, #3f1313, #140f26); border-color: #7e2b2b;">
+        <div class="promo-badge" style="background: #ef4444; box-shadow: 0 2px 8px rgba(239,68,68,0.5);">MÁS VENDIDO</div>
+        <h4 class="carousel-title">Netflix Premium 4K</h4>
+        <p class="carousel-desc">Cuenta completa con 4 pantallas. Sin interrupciones y garantía de 30 días.</p>
+        <div class="carousel-price">$95 MXN</div>
+        <button class="carousel-btn" style="background: #ef4444; box-shadow: 0 4px 10px rgba(239,68,68,0.4);" onclick="openModal('waModal')">Gestionar pedido</button>
+      </div>
+
+    </div>
+  </div>
+
   <div class="container" id="catalog"></div>
   <div class="no-results" id="noResults">No se encontraron servicios.</div>
+  
   <footer>© 2026 Stream Pro. Todos los derechos reservados.<br>Plataforma de alta fiabilidad en Veracruz, México.</footer>
   
-  <---------------------------------------- Nuevo Boton Harvis 3D -->
   <div class="whatsapp-container" onclick="openModal('waModal')">
     <img src="harvis.jpg" class="harvis-wa-btn" alt="Harvis Bot" onerror="this.style.display='none'">
     <span class="wa-label">Pedir servicio</span>
   </div>
 
+  <---------------------------------------- MODAL HISTORIA -->
   <div class="modal-overlay" id="historyModal" onclick="closeOnOutside(event, 'historyModal')">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal('historyModal')">×</span>
       <h2 style="text-align:center; color:#fff; margin-top:0; font-size:1.6rem; letter-spacing:1px;">STREAM PRO</h2>
       <p style="text-align:center; color:var(--accent); font-weight:600; font-size:0.85rem; margin-top:-10px; margin-bottom:1.5rem;">CONECTA CON LO PRO. TU MUNDO DIGITAL</p>
-      
-      <---------------------------------------- Sección de Identidad Reparada -->
       <div style="text-align: center; margin-bottom: 1.5rem;">
         <img src="avatar.jpg" class="avatar-img" alt="Fundador" onerror="this.style.display='none'">
         <h3 style="color:#fff; margin: 12px 0 0 0; font-size:1.2rem;">Ing. Carlos</h3>
         <p style="color:var(--accent); margin: 0; font-size:0.9rem; letter-spacing:1px;">Arquitecto & Fundador</p>
       </div>
-      
       <div class="history-section">
         <h3>01. El Origen</h3><p>Nacido en un dispositivo Android en Veracruz, México. El objetivo desde el primer día fue democratizar el acceso a los mejores servicios digitales mediante una atención confiable.</p>
         <h3>02. Evolución Técnica (Termux / CLI)</h3><p>Para escalar, la infraestructura integró el poder de la terminal de Linux mediante Termux. Esto permitió gestionar conexiones SSH y automatizar scripts para mayor seguridad operativa.</p>
@@ -106,6 +152,7 @@
     </div>
   </div>
 
+  <---------------------------------------- MODAL WHATSAPP -->
   <div class="modal-overlay" id="waModal" onclick="closeOnOutside(event, 'waModal')">
     <div class="modal-content" style="max-width: 350px;">
       <span class="close-btn" onclick="closeModal('waModal')">×</span>
@@ -119,6 +166,7 @@
   function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
   function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
   function closeOnOutside(e, id) { if(e.target.id === id) closeModal(id); }
+  
   const brandStyles = {
     "netflix": { domain: "netflix.com", bg: "linear-gradient(135deg, #e50914, #800000)", char: "N" },
     "disney": { domain: "disneyplus.com", bg: "linear-gradient(135deg, #001034, #0072d2)", char: "D+" },
@@ -156,7 +204,9 @@
     { c: "🎬 Plataformas de Streaming", i: [ "Netflix Estándar (anuncios)|$59|Cuenta básica para 1 dispositivo. Incluye pausas comerciales durante la reproducción.|GARANTÍA 30 DÍAS|PERFIL COMPARTIDO|ENTREGA INMEDIATA", "Netflix Premium|1 mes: $95|Resolución 4K Ultra HD. Hasta 4 pantallas simultáneas sin interrupciones comerciales.|GARANTÍA 30 DÍAS|4 PANTALLAS|SOPORTE 24/7", "Disney+ Premium|1 mes: $99 | 2 meses: $149|Incluye catálogo completo de Disney, Marvel, Star Wars, Pixar y deportes de ESPN en 4K.|GARANTÍA 30 DÍAS|SOPORTE COMPLETO|RENOVABLE", "Max Platino|1 mes: $92 | 2 meses: $115 | 3 meses: $149|Catalogo Premium de Max, HBO y series exclusivas en excelente resolución.|GARANTÍA 30 DÍAS|PERFIL COMPARTIDO|RENOVABLE", "Prime Video|1 mes: $56 | 2 meses: $99 | Anual: $150|Disfruta de las mejores películas y series con envíos gratis en Amazon.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|MULTIDISPOSITIVO", "ViX Premium|1 mes: $65 | 2 meses: $89 | 3 meses: $130 | 6 meses: $179 | Anual: $199|Acceso completo a telenovelas, películas y eventos deportivos exclusivos.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|RENOVABLE", "Paramount+|$49|Películas, series exclusivas y deportes en directo.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|SOPORTE COMPLETO", "Crunchyroll|1 mes: $71 | 2 meses: $97 | Anual: $165|Todo el catálogo de anime sin anuncios, subtitulado y en alta definición.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|RENOVABLE", "Plex|$89|Organización de tus contenidos multimedia con transmisión premium.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|MULTIDISPOSITIVO", "Viki Rakuten|$77|El mejor entretenimiento asiático: dramas, películas y shows.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|SOPORTE CONTINUO", "Universal+|$127|Grandes series, películas y producciones internacionales de primer nivel.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "Peacock Premium|1 mes / cuenta completa: $69|Transmisión de grandes producciones, películas taquilleras y eventos en vivo.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Edye|1 mes / cuenta completa: $39|Entretenimiento infantil, seguro, educativo y sin comerciales.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|RENOVABLE", "Pornhub Premium|1 mes: $55|Acceso a contenido exclusivo en la más alta resolución.|PRIVACIDAD|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "Brazzers Premium|Perfil / 1 mes: $55|Contenido premium de entretenimiento privado y exclusivo.|PRIVACIDAD|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA", "IPTV|$75|Acceso a miles de canales de televisión en vivo, películas y series.|GARANTÍA 30 DÍAS|MULTIDISPOSITIVO|SOPORTE 24/7" ] },
     { c: "⚽ Deportes", i: [ "DAZN|$125|La mayor plataforma de deportes en vivo y bajo demanda.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|ENTREGA INMEDIATA", "FOX One|$127|Transmisión de los canales de Fox Sports y programación especial.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|ENTREGA INMEDIATA", "NBA League Pass|1 mes / 1 dispositivo: $99|Disfruta de todos los partidos de la temporada en vivo y en HD.|GARANTÍA 30 DÍAS|1 DISPOSITIVO|SOPORTE CONTINUO", "NBA League Pass|1 mes / hasta 3 dispositivos: $149|Acceso completo para múltiples pantallas.|GARANTÍA 30 DÍAS|HASTA 3 PANTALLAS|RENOVABLE" ] },
     { c: "🎵 Música y Video", i: [ "Apple TV+|1 mes: $99 | 3 meses: $148|Historias originales de los creadores más brillantes del cine y la televisión.|GARANTÍA 30 DÍAS|ENTREGA INMEDIATA|RENOVABLE", "YouTube Premium|1 mes: $79 | 2 meses: $159 | 3 meses: $180 | Familiar: $200|Videos sin anuncios, reproducción en segundo plano y acceso a YouTube Music.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|RENOVABLE", "Spotify Premium|1 mes: $69 | 2 meses: $138 | 3 meses: $165 | Familiar: $199|Música sin interrupciones, saltos ilimitados y modo offline para escuchar sin internet.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|RENOVABLE", "Deezer|1 mes: $69 | 2 meses: $138|Transmisión de millones de canciones sin anuncios y en excelente calidad.|GARANTÍA 30 DÍAS|SIN ANUNCIOS|SOPORTE CONTINUO" ] },
-    { c: "🪄 Aplicaciones y Herramientas", i: [ "Canva Pro|1 mes: $75 | 2 meses: $149 | 3 meses: $180 | 6 meses: $250 | Anual: $299 | Acceso por invitación 1 mes: $49|Acceso a todas las plantillas premium, herramientas de Inteligencia Artificial y removedor de fondo.|GARANTÍA 30 DÍAS|DISEÑO COMPLETO|MULTIDISPOSITIVO", "ChatGPT Plus|$190|Acceso prioritario a GPT-4, respuestas rápidas y nuevas funciones inteligentes.|GARANTÍA 30 DÍAS|PRODUCTIVIDAD|INTELIGENCIA ARTIFICIAL", "Duolingo Plus|$74|Aprende idiomas sin anuncios, con vidas ilimitadas y pruebas ilimitadas.|GARANTÍA 30 DÍAS|EDUCACIÓN|ENTREGA INMEDIATA", "Microsoft 365|1 mes / hasta 5 dispositivos: $112 | Microsoft Office anual: $924|Paquete completo de Word, Excel, PowerPoint y 1 TB de almacenamiento en la nube.|GARANTÍA 30 DÍAS|5 DISPOSITIVOS|RENOVABLE", "Picsart Pro|Cuenta completa / 1 mes: $79|Edición avanzada de fotografías y diseño con recursos premium ilimitados.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Picsart|Acceso familiar / 1 mes: $89|Disfruta de las ventajas dePicsart Pro de forma compartida.|GARANTÍA 30 DÍAS|FAMILIAR|SOPORTE CONTINUO", "CapCut Pro|Cuenta completa / 1 mes: $149|Edición de video profesional con efectos, plantillas y herramientas IA exclusivas.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Adobe Express Premium|1 mes / 1 dispositivo: $69|Crea contenido extraordinario de forma rápida con acceso a miles de recursos de Adobe.|GARANTÍA 30 DÍAS|1 DISPOSITIVO|RENOVABLE", "Configuración y creación asistida de correo Outlook/Hotmail|Desde $25|Creación y ajuste personalizado de cuentas electrónicas con seguridad avanzada.|GESTIONADA|CONFIGURADO" ] },
+    { c: "🪄 Aplicaciones y Herramientas", i: [ "Canva Pro|1 mes: $75 | 2 meses: $149 | 3 meses: $180 | 6 meses: $250 | Anual: $299 | Acceso por invitación 1 mes: $49|Acceso a todas las plantillas premium, herramientas de Inteligencia Artificial y removedor de fondo.|GARANTÍA 30 DÍAS|DISEÑO COMPLETO|MULTIDISPOSITIVO", "ChatGPT Plus|$190|Acceso prioritario a GPT-4, respuestas rápidas y nuevas funciones inteligentes.|GARANTÍA 30 DÍAS|PRODUCTIVIDAD|INTELIGENCIA ARTIFICIAL", "Duolingo Plus|$74|Aprende idiomas sin anuncios, con vidas ilimitadas y pruebas ilimitadas.|GARANTÍA 30 DÍAS|EDUCACIÓN|ENTREGA INMEDIATA", "Microsoft 365|1 mes / hasta 5 dispositivos: $112 | Microsoft Office anual: $924|Paquete completo de Word, Excel, PowerPoint y 1 TB de almacenamiento en la nube.|GARANTÍA 30 DÍAS|5 DISPOSITIVOS|RENOVABLE", "Picsart Pro|Cuenta completa / 1 mes: $79|Edición avanzada de fotografías y diseño con recursos premium ilimitados.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Picsart|Acceso familiar / 1 mes: $89|Disfruta de las ventajas dePicsart Pro de forma compartida.|GARANTÍA 30 DÍAS|FAMILIAR|SOPORTE CONTINUO", "CapCut Pro|Cuenta completa / 1 mes: $149|Edición de video profesional con efectos, plantillas y herramientas IA exclusivas.|GARANTÍA 30 DÍAS|CUENTA COMPLETA|SOPORTE CONTINUO", "Adobe Express Premium|1 mes / 1 dispositivo: $69|Crea contenido extraordinario de forma rápida con acceso a miles de recursos de Adobe.|GARANTÍA 30 DÍAS|1 DISPOSITIVO|RENOVABLE", "Configuración y creación asistida de correo Outlook/Hotmail|Desde $25|Creación y ajuste personalizado de cuentas electrónicas con seguridad avanzada.|GESTIONADA|CONFIGURADO" ] }
+  ];
+  const fullData2 = [
     { c: "🔐 VPN y Seguridad Digital", i: [ "PureVPN|1 mes: $99|Protege tu privacidad y cifra tu conexión con velocidad excelente.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|SOPORTE CONTINUO", "NordVPN|1 mes / 1 dispositivo: $59 | 3 meses / 1 dispositivo: $89 | 3 meses / cuenta completa: $199|La red privada virtual más segura y veloz para tus dispositivos.|GARANTÍA 30 DÍAS|SEGURIDAD|RENOVABLE", "ExpressVPN|1 mes / celular: $79 | 1 mes / PC: $99 | Anual / celular: $249 | Anual / PC: $299|Seguridad excelente y desbloqueo de contenidos de forma inmediata.|GARANTÍA 30 DÍAS|VELOCIDAD|RENOVABLE", "Bitdefender VPN Premium|1 mes / 1 dispositivo: $49 | 1 mes / cuenta completa: $79|Protección avanzada contra amenazas y navegación 100% privada.|GARANTÍA 30 DÍAS|SEGURIDAD|ENTREGA INMEDIATA", "Avira Phantom VPN Premium|3 meses / 1 dispositivo: $69 | 3 meses / cuenta completa: $99|Navegación segura y anónima con límites ilimitados.|GARANTÍA|SOPORTE CONTINUO|MULTIDISPOSITIVO", "Surfshark VPN Premium|2 meses / 1 dispositivo: $79|Seguridad avanzada sin límite de pantallas para todos tus dispositivos.|GARANTÍA 30 DÍAS|SOPORTE CONTINUO|RENOVABLE" ] },
     { c: "📄 Trámites, Consultas e Identidad Digital", i: [ "Constancia de Situación Fiscal / RFC con IDCIF - Consulta y descarga|$49|Obtención rápida de tu constancia actualizada directamente del SAT.|TRAMITADO|SEGURO", "RFC - Copia informativa / reproducción de referencia|$69|Generación de referencia informativa de tu RFC.", "RFC de Persona Física - Apoyo en trámite de primera inscripción (1 QR)|$155|Gestión paso a paso de tu inscripción inicial.", "RFC verificable - Consulta y obtención de constancia con QR|$150|Tu constancia 100% válida con lector de código QR.", "RFC - Gestión para obtención de constancia oficial|$270|Tramitamos tu documento oficial sin complicaciones.", "Consulta de datos mediante CURP o RFC|$35|Revisión rápida de tus registros de identidad.", "CURP - Consulta y descarga|$15|Tu Clave Única de Registro de Población descargada al instante.", "CURP - Copia informativa / reproducción de referencia|$45|Formato digital rápido de referencia.", "Edición y corrección de formato digital de documentos no oficiales|$180|Ajustes visuales y correcciones de documentos digitales.", "Gestión de Constancia de Concubinato|$260|Tramitación y obtención de documento oficial.", "Constancia de Inexistencia de Registro de Matrimonio - Gestión|$250|Trámite legal de inexistencia.", "Localización de AFORE|$35|Ubicamos la administradora de tus ahorros laborales.", "NSS actualizado - 2 hojas|$60|Tu Número de Seguro Social en formato oficial.", "Constancia de Semanas Cotizadas en el IMSS|$80|Reporte detallado de tu historial laboral.", "Constancia de Vigencia de Derechos del IMSS|$75|Comprobante de acceso a servicios médicos.", "Constancia de No Derechohabiencia del IMSS|$60|Documento oficial de no vigencia.", "Consulta / gestión de Recibo CFE actualizado|$35|Tu recibo de luz digital listo.", "Constancia de No Deudor Alimentario Moroso Federal/CDMX|$65|Trámite de no antecedentes en padrón alimentario.", "No Deudor Alimentario Moroso - Estado de México, copia informativa|$60|Consulta de deudor.", "Antecedentes No Penales Estatal - Gestión de constancia|$70|Tu documento con validez oficial del estado.", "Antecedentes No Penales Federal verificable - Gestión|$95|Certificado federal oficial.", "Certificado de Bautizo - Gestión de constancia|$140|Obtención oficial de tu registro de fe.", "Constancia de Pláticas de Bautizo - Gestión|$150|Trámite ágil de constancia.", "Certificados Laborales - Consulta / gestión|$70|Obtención rápida de tus cartas.", "Acta de Nacimiento oficial - Gestión de obtención|$99|Tu acta registrada, válida para cualquier trámite.", "Acta de Matrimonio oficial - Gestión de obtención|$119|Registro civil oficial.", "Acta de Divorcio oficial - Gestión de obtención|$129|Documento con validez legal.", "Acta de Defunción oficial - Gestión de obtención|$99|Gestión oficial y respetuosa.", "Copia informativa de Acta / reproducción de referencia|$75|Consulta rápida y de apoyo." ] },
     { c: "🩺 Servicios Médicos, Laboratorio y Gestión de Salud", i: [ "Gestión para consulta y Certificado Médico en consultorio autorizado|$65|Certificado ágil para escuela o trabajo.", "Gestión de Ultrasonido 4D - Salud Digna|$115|Citas y gestión para tu ultrasonido.", "Gestión de Prueba de Embarazo en Sangre|$60|Atención rápida para estudios clínicos.", "Gestión de Prueba COVID-19 - IMSS / Salud Digna / Chopo|$70|Programación de pruebas rápidas y PCR.", "Gestión de Prueba de Dengue|$70|Seguimiento ágil en laboratorio.", "Gestión de Prueba Antidoping - Salud Digna|$70|Estudio clínico seguro y validado.", "Apoyo para solicitud u orden de Estudios de Laboratorio IMSS|$75|Gestión asistida de documentos médicos.", "Gestión de valoración en Cardiología|$75|Citas y trámites especializados.", "Apoyo para Referencia / Contrarreferencia IMSS|$75|Movimiento entre unidades médicas.", "Orientación para Triage y Atención de Urgencias|$75|Guía rápida para ingreso en urgencias.", "Orientación y gestión para Atención de Urgencias ISSSTE|$85|Apoyo en situaciones urgentes.", "Orientación y seguimiento de trámite de Incapacidad ISSSTE|$85|Gestión ágil de reposos laborales.", "Gestión de consulta médica para valoración y receta|$65|Atención personalizada y segura.", "Orientación y seguimiento de trámite de Incapacidad IMSS|$80|Incapacidades laborales.", "Orientación / gestión para Prueba de Influenza IMSS|$65|Estudios ágiles." ] },
@@ -164,10 +214,18 @@
     { c: "🚗 Servicios para Automóviles", i: [ "Gestión de Permiso Provisional para Circular sin Placas - Guerrero|$120 + derechos oficiales|Tu permiso temporal válido y legal." ] },
     { c: "🏠 INFONAVIT", i: [ "Consulta de Historial Laboral INFONAVIT|$49|Tu historial completo de relaciones laborales.", "Consulta de Datos de Cuenta INFONAVIT|$49|Detalles de tu cuenta e historial.", "Consulta de Saldo INFONAVIT|$35|Búsqueda rápida de tus ahorros.", "Apoyo para Registro de Mi Cuenta INFONAVIT|$69|Creación fácil de tu cuenta.", "Consulta de Historial de Movimientos / Saldos INFONAVIT|$49|Tus ahorros al día.", "Orientación para recuperación o cambio de clave de acceso INFONAVIT|$69|Acceso rápido a tu cuenta.", "Apoyo para desbloqueo y recuperación de acceso INFONAVIT|Consultar precio|Soluciones completas de acceso." ] }
   ];
+  
+  const allCatalogData = fullData.concat(fullData2);
   function toggleDetails(element) { element.classList.toggle('open'); }
+  
   function renderCatalog(filterText = "") {
     let html = "", hasResults = false; const term = filterText.toLowerCase();
-    fullData.forEach(cat => {
+    
+    // Ocultar carrusel si el usuario está buscando algo específico
+    const carousel = document.getElementById('promoCarousel');
+    if (carousel) { carousel.style.display = term.length > 0 ? 'none' : 'block'; }
+
+    allCatalogData.forEach(cat => {
       let filteredItems = cat.i.filter(item => item.toLowerCase().includes(term));
       if (filteredItems.length > 0) {
         hasResults = true; html += `<div class="category"><h2>${cat.c}</h2>`;
