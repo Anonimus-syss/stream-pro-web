@@ -81,6 +81,85 @@
   .pin-input:focus { border-color: var(--accent); }
 </style>
 </head>
+
+    <!-- MODAL DE CHECKOUT VIP (Oculto por defecto) -->
+    <div id="modal-checkout" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
+        <div class="bg-[#0b0f19] border border-gray-800 rounded-2xl shadow-2xl shadow-purple-900/20 w-full max-w-md overflow-hidden relative">
+            
+            <!-- Botón Cerrar -->
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Cabecera del Modal -->
+            <div class="p-6 border-b border-gray-800 bg-[#111827]">
+                <h3 class="text-white text-lg font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-purple-500"></i> Completar Pedido
+                </h3>
+                <p class="text-gray-400 text-xs mt-1">Conexión segura con jazander 🤖</p>
+            </div>
+
+            <!-- Cuerpo del Modal -->
+            <div class="p-6">
+                <!-- Resumen del Servicio -->
+                <div class="bg-gray-900 rounded-lg p-4 border border-gray-800 mb-5">
+                    <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Servicio Seleccionado</p>
+                    <p id="modal-nombre-servicio" class="text-white font-semibold text-sm truncate">Cargando...</p>
+                    <p id="modal-precio-servicio" class="text-purple-400 font-bold text-xl mt-1">$0.00</p>
+                </div>
+
+                <!-- Formulario Rápido -->
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <label class="block text-gray-400 text-xs mb-1 ml-1">Tu Nombre o Alias</label>
+                        <input type="text" id="input-nombre" placeholder="Ej. Carlos" class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition">
+                    </div>
+                </div>
+
+                <!-- Botón de Envío a WhatsApp -->
+                <button onclick="enviarPedidoJazander()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition shadow-lg shadow-purple-600/30">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Solicitar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLES GLOBALES DEL MODAL
+        let servicioActual = '';
+        let precioActual = '';
+        
+        // Líneas asignadas
+        const lineaPublica = "525629780972"; 
+        const lineaVIP = "525639434114";
+
+        function abrirModalCompra(nombre, precio) {
+            servicioActual = nombre;
+            precioActual = precio;
+            document.getElementById('modal-nombre-servicio').innerText = nombre;
+            document.getElementById('modal-precio-servicio').innerText = precio;
+            document.getElementById('modal-checkout').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-checkout').classList.add('hidden');
+        }
+
+        function enviarPedidoJazander() {
+            let nombreCliente = document.getElementById('input-nombre').value.trim();
+            if (!nombreCliente) nombreCliente = "Cliente web";
+
+            // Si el candado VIP está abierto, manda a la línea 4114. Si no, a la 0972.
+            const numeroDestino = (typeof modoVIPActivo !== 'undefined' && modoVIPActivo) ? lineaVIP : lineaPublica;
+
+            const mensaje = `🤖 *NUEVO PEDIDO WEB*\n\nHola jazander, soy ${nombreCliente}. Deseo adquirir:\n\n📌 *Servicio:* ${servicioActual}\n💰 *Costo:* ${precioActual}\n\n¿Me proporcionas los métodos de pago?`;
+            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
+            
+            window.open(urlWhatsApp, '_blank');
+            cerrarModal();
+        }
+    </script>
+
 <body>
   <header>🛡️ Chars Stream<span>Pro</span></header>
   <div class="hero">
