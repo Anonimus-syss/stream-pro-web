@@ -50,3 +50,13 @@ const DB_STREAM_PRO = {
     }
   ]
 };
+
+// Puente automático: Convierte la DB al formato exacto que usa la página web
+const fullData1 = DB_STREAM_PRO.categorias.map(cat => {
+  return {
+    c: cat.nombre,
+    i: DB_STREAM_PRO.servicios
+      .filter(s => s.categoria === cat.id && s.stock_disponible)
+      .map(s => `${s.nombre}|$${s.precio_mxn}|${s.duracion}|GARANTÍA 28 DÍAS|RENOVABLE`)
+  };
+});
