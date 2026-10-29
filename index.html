@@ -436,7 +436,8 @@
           let p = item.split('|'), brand = getBrandConfig(p[0], cat.c), desc = p[2] ? p[2] : "Toca el botón de WhatsApp abajo para consultar requisitos.";
           let logoHtml = "";
           if (brand.domain) { logoHtml = `<img src="https://icon.horse/icon/${brand.domain}" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div class="logo-container" style="background: ${brand.bg}; display:none;">${brand.char}</div>`;
-          } else { logoHtml = `<div class="logo-container" style="background: ${brand.bg};">${brand.char}</div>`; }
+              logoHtml = `<div class="logo-container" style="background: ${brand.bg};">${brand.char}</div>`;
+          }
           let badgeHtml = "", benefitsHtml = "";
           if (p.length > 3) {
             badgeHtml += `<div class="badge-container">`;
