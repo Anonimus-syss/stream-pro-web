@@ -1,97 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chars Stream Pro - Catálogo Oficial</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root { --bg: #090615; --card: #140f26; --text: #e2e8f0; --accent: #a855f7; --accent-glow: rgba(168, 85, 247, 0.4); --badge-bg: #221440; --badge-border: #442a80; }
-  body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 120px; }
-  header { background: rgba(20, 15, 38, 0.95); backdrop-filter: blur(10px); padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.6); text-align: center; font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
-  header span { color: var(--accent); }
-  .hero { text-align: center; padding: 2rem 1rem 1.5rem; }
-  .hero h1 { margin: 0; font-size: 1.8rem; color: #fff; }
-  .hero p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1rem; }
-  .btn-group { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem; }
-  .action-btn { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 20px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
-  .action-btn:hover { background: var(--accent); color: #fff; box-shadow: 0 0 10px var(--accent-glow); }
-  .action-btn.ofertas { border-color: #ef4444; color: #ef4444; }
-  .action-btn.ofertas:hover { background: #ef4444; color: #fff; box-shadow: 0 0 10px rgba(239,68,68,0.4); }
-  .search-container { max-width: 800px; margin: 0 auto 1rem; padding: 0 1rem; }
-  .search-bar { width: 100%; padding: 14px 24px; border-radius: 30px; border: 1.5px solid #2d1d4c; background: #1a1235; color: white; font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: 0.3s; }
-  .search-bar:focus { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
-  
-  .carousel-section { max-width: 800px; margin: 0 auto 1.5rem; padding: 0 1rem; }
-  .carousel-section h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem; margin-top: 0; display: flex; align-items: center; gap: 0.5rem; }
-  .carousel { display: flex; overflow-x: auto; gap: 1rem; padding-bottom: 1rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .carousel::-webkit-scrollbar { display: none; }
-  .carousel-card { flex: 0 0 82%; max-width: 280px; background: linear-gradient(145deg, #1f143a, #140f26); border: 1px solid #442a80; border-radius: 16px; padding: 1.5rem; scroll-snap-align: center; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-  .promo-badge { position: absolute; top: 12px; right: 12px; background: #ff0055; color: white; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; box-shadow: 0 2px 8px rgba(255,0,85,0.5); }
-  .carousel-title { color: #fff; font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; line-height: 1.2; }
-  .carousel-desc { color: #94a3b8; font-size: 0.8rem; margin-bottom: 1rem; line-height: 1.4; }
-  .carousel-price { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-  .carousel-btn { display: block; width: 100%; background: var(--accent); color: white; padding: 10px; border-radius: 10px; font-weight: 600; border: none; cursor: pointer; transition: 0.2s; font-family: 'Poppins', sans-serif; }
-  .carousel-btn:hover { transform: translateY(-2px); }
-
-  .container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
-  .category { background: var(--card); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #1f143a; }
-  .category h2 { margin-top: 0; border-bottom: 2px solid #2e1e50; padding-bottom: 0.8rem; color: #fff; font-size: 1.25rem; font-weight: 600; }
-  .item { padding: 1rem; border-radius: 12px; margin-bottom: 0.8rem; background: #0e0a1e; cursor: pointer; border: 1px solid #1b1338; transition: 0.2s; user-select: none; }
-  .item:hover { transform: translateY(-2px); border-color: var(--accent); background: #130d2a; }
-  .item-header { display: flex; gap: 1rem; align-items: center; position: relative; }
-  .logo-img { width: 44px; height: 44px; border-radius: 10px; object-fit: contain; background: #fff; padding: 2px; }
-  .logo-container { width: 48px; min-width: 48px; height: 48px; min-height: 48px; flex-shrink: 0; margin-right: 15px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.5rem; color: #fff; box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 4px 10px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); text-shadow: 1px 1px 3px rgba(0,0,0,0.6); overflow: hidden; }
-  .item-info { display: flex; flex-direction: column; gap: 0.2rem; flex-grow: 1; }
-  .item-title { font-weight: 600; font-size: 1.05rem; color: #f8fafc; }
-  .item-price { color: var(--accent); font-size: 0.95rem; font-weight: 700; }
-  .badge-container { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-  .badge { font-size: 0.65rem; font-weight: 600; padding: 3px 8px; border-radius: 20px; border: 1px solid var(--badge-border); background: var(--badge-bg); color: #c084fc; text-transform: uppercase; }
-  .badge.garantia { border-color: #10b981; background: rgba(16, 185, 129, 0.1); color: #34d399; }
-  .badge.urgencia { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); color: #f87171; }
-  .badge.acceso { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); color: #60a5fa; }
-  .chevron { font-size: 0.8rem; color: #4e3f7a; transition: 0.3s; margin-left: auto; padding-left: 0.5rem; }
-  .item.open .chevron { transform: rotate(180deg); color: var(--accent); }
-  .item-details { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
-  .item.open .item-details { max-height: 800px; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #221544; }
-  .item-banner { width: 100%; border-radius: 8px; margin-bottom: 10px; object-fit: cover; border: 1px solid #2e1e50; }
-  .benefits-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: flex; flex-direction: column; gap: 0.4rem; }
-  .benefits-list li { display: flex; align-items: center; gap: 0.4rem; color: #cbd5e1; }
-  .benefits-list li::before { content: "⚡"; font-size: 0.8rem; color: var(--accent); }
-  
-  .nu-banner { max-width: 800px; margin: 2rem auto 0; padding: 1.5rem; background: linear-gradient(135deg, #820ad1, #57058f); border-radius: 16px; display: flex; align-items: center; gap: 1rem; box-shadow: 0 8px 20px rgba(130, 10, 209, 0.3); border: 1px solid #a338e3; }
-  .nu-banner img { width: 50px; height: 50px; object-fit: contain; }
-  .nu-text { color: white; }
-  .nu-text h4 { margin: 0 0 0.2rem 0; font-size: 1.1rem; }
-  .nu-text p { margin: 0; font-size: 0.8rem; color: #e9d5ff; }
-
-  footer { text-align: center; padding: 2.5rem 1rem; color: #4e3f7a; font-size: 0.85rem; }
-  .no-results { text-align: center; color: #94a3b8; padding: 2rem; display: none; }
-  .whatsapp-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer; display: flex; flex-direction: column; align-items: center; animation: float 3s infinite; }
-  .jazander-wa-btn { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid #25D366; background: #090615; transition: 0.3s; }
-  .wa-label { background: rgba(0,0,0,0.8); color: white; padding: 5px 12px; border-radius: 12px; font-size: 0.75rem; margin-top: 8px; font-weight: 600; border: 1px solid #25D366; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  
-  .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; padding: 1rem; backdrop-filter: blur(8px); }
-  .modal-content { background: var(--card); border: 1px solid #442a80; border-radius: 20px; width: 100%; max-width: 500px; max-height: 85vh; overflow-y: auto; padding: 2rem; position: relative; }
-  .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #94a3b8; }
-  .avatar-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin: 0 auto; display: block; }
-  .wa-btn { display: block; background: #25D366; color: white; border-radius: 12px; padding: 14px; text-decoration: none; font-weight: 600; font-size: 1rem; text-align: center; margin-bottom: 1rem; }
-  .pin-input { width: 100%; padding: 15px; background: #090615; border: 2px solid #442a80; color: white; text-align: center; font-size: 1.5rem; border-radius: 12px; margin-bottom: 1rem; letter-spacing: 5px; outline: none; }
-  .pin-input:focus { border-color: var(--accent); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chars stream pro | Servicios Digitales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0f19; color: #ffffff; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .bg-panel { background-color: #111827; }
+        /* Transición suave para el modal */
+        #modal-checkout { transition: opacity 0.3s ease; }
+    </style>
 </head>
+<body class="flex flex-col min-h-screen">
 
-    <!-- MODAL DE CHECKOUT VIP (Oculto por defecto) -->
-    <div id="modal-checkout" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
-        <div class="bg-[#0b0f19] border border-gray-800 rounded-2xl shadow-2xl shadow-purple-900/20 w-full max-w-md overflow-hidden relative">
+    <!-- CABECERA PRINCIPAL -->
+    <header class="bg-panel border-b border-gray-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-microchip text-2xl text-purple-500"></i>
+                <div class="leading-tight">
+                    <h1 class="text-white font-bold text-lg tracking-wide uppercase">Chars stream pro</h1>
+                    <p class="text-gray-400 text-[10px] tracking-widest uppercase">Servicios Digitales</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="bg-gray-800/80 border border-gray-700 rounded-full px-3 py-1.5 hidden sm:flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-sm"></i>
+                    <span class="text-white font-semibold text-sm">Garantía Total</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow p-4">
+        <div class="max-w-7xl mx-auto mt-2">
+            
+            <!-- Barra de Control VIP -->
+            <div class="flex justify-between items-center mb-6 bg-gray-900 border border-gray-800 p-3 rounded-lg">
+                <div class="text-gray-400 text-sm font-semibold tracking-widest uppercase">
+                    <i class="fa-solid fa-layer-group mr-2"></i>Catálogo
+                </div>
+                <button onclick="activarModoVIP()" id="btn-vip" class="bg-gray-800 hover:bg-purple-700 border border-gray-700 text-white px-4 py-1.5 rounded transition text-xs font-bold shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-gray-400" id="icono-candado"></i> Precios Mayoreo
+                </button>
+            </div>
+            
+            <!-- Contenedor de Tarjetas -->
+            <div id="grid-catalogo" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Se inyectan por JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE CHECKOUT (Oculto por defecto, z-50 para estar por encima de todo) -->
+    <div id="modal-checkout" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-center items-center p-4">
+        <div class="bg-[#0b0f19] border border-gray-700 rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden">
             
             <!-- Botón Cerrar -->
-            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition">
-                <i class="fa-solid fa-xmark text-xl"></i>
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition z-10">
+                <i class="fa-solid fa-xmark text-2xl"></i>
             </button>
 
-            <!-- Cabecera del Modal -->
+            <!-- Cabecera -->
             <div class="p-6 border-b border-gray-800 bg-[#111827]">
                 <h3 class="text-white text-lg font-bold flex items-center gap-2">
                     <i class="fa-solid fa-cart-shopping text-purple-500"></i> Completar Pedido
@@ -99,24 +72,19 @@
                 <p class="text-gray-400 text-xs mt-1">Conexión segura con jazander 🤖</p>
             </div>
 
-            <!-- Cuerpo del Modal -->
+            <!-- Cuerpo -->
             <div class="p-6">
-                <!-- Resumen del Servicio -->
                 <div class="bg-gray-900 rounded-lg p-4 border border-gray-800 mb-5">
                     <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Servicio Seleccionado</p>
-                    <p id="modal-nombre-servicio" class="text-white font-semibold text-sm truncate">Cargando...</p>
-                    <p id="modal-precio-servicio" class="text-purple-400 font-bold text-xl mt-1">$0.00</p>
+                    <p id="modal-nombre-servicio" class="text-white font-semibold text-sm">Cargando...</p>
+                    <p id="modal-precio-servicio" class="text-purple-400 font-bold text-2xl mt-1">$0.00</p>
                 </div>
 
-                <!-- Formulario Rápido -->
-                <div class="space-y-4 mb-6">
-                    <div>
-                        <label class="block text-gray-400 text-xs mb-1 ml-1">Tu Nombre o Alias</label>
-                        <input type="text" id="input-nombre" placeholder="Ej. Carlos" class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition">
-                    </div>
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-xs mb-1 ml-1">Tu Nombre o Alias</label>
+                    <input type="text" id="input-nombre" placeholder="Ej. Carlos" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition">
                 </div>
 
-                <!-- Botón de Envío a WhatsApp -->
                 <button onclick="enviarPedidoJazander()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition shadow-lg shadow-purple-600/30">
                     <i class="fa-brands fa-whatsapp text-xl"></i> Solicitar por WhatsApp
                 </button>
@@ -124,21 +92,100 @@
         </div>
     </div>
 
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-panel border-t border-gray-800 pt-8 pb-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-xs">© 2024 - 2026 CHARS STREAM PRO. Todos los derechos reservados.</p>
+            <p class="text-gray-600 text-xs mt-1">Arquitectura por Ing. Carlos</p>
+        </div>
+    </footer>
+
+    <!-- MOTOR JAVASCRIPT -->
     <script>
-        // VARIABLES GLOBALES DEL MODAL
+        // 1. BASE DE DATOS DEL CATÁLOGO
+        const catalogoTermux = [
+            { id: "OFERTA1", nombre: "ViX + Crunchyroll + Paramount+", precioCliente: 139, precioVIP: 110, logo: "fa-fire", color: "bg-gradient-to-r from-blue-700 to-indigo-900", textColor: "text-white" },
+            { id: "S01", nombre: "Netflix Cuenta Completa (5 Perfiles)", precioCliente: 300, precioVIP: 240, logo: "fa-n", color: "bg-black", textColor: "text-red-600" },
+            { id: "S05", nombre: "Max Platino (1 mes)", precioCliente: 92, precioVIP: 35, logo: "fa-m", color: "bg-[#002BE7]", textColor: "text-white" },
+            { id: "T01", nombre: "RFC con IDCIF (Consulta y descarga)", precioCliente: 49, precioVIP: 35, logo: "fa-file-signature", color: "bg-gray-800", textColor: "text-green-400" },
+            { id: "T03", nombre: "Acta oficial de Nacimiento", precioCliente: 150, precioVIP: 99, logo: "fa-file-lines", color: "bg-gray-800", textColor: "text-green-400" }
+        ];
+
+        // 2. VARIABLES GLOBALES
+        let modoVIPActivo = false;
         let servicioActual = '';
         let precioActual = '';
-        
-        // Líneas asignadas
         const lineaPublica = "525629780972"; 
         const lineaVIP = "525639434114";
 
+        // 3. RENDERIZAR INTERFAZ
+        function renderizarCatalogo() {
+            const contenedor = document.getElementById('grid-catalogo');
+            contenedor.innerHTML = ''; 
+
+            catalogoTermux.forEach(servicio => {
+                const precioMXN = modoVIPActivo ? servicio.precioVIP : servicio.precioCliente;
+                
+                // Nota: Inyectamos dinámicamente el onClick en el botón
+                const tarjetaHTML = `
+                <div class="bg-gray-900 border ${modoVIPActivo ? 'border-purple-900/50' : 'border-gray-800'} rounded-xl overflow-hidden shadow-lg flex flex-col h-full p-4">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 ${servicio.color} rounded-lg flex items-center justify-center shadow-lg shrink-0">
+                            <i class="fa-solid ${servicio.logo} text-2xl ${servicio.textColor}"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm leading-tight">${servicio.nombre}</p>
+                            <div class="flex gap-2 mt-1">
+                                <span class="bg-green-900/30 text-green-500 text-[9px] px-2 py-0.5 rounded border border-green-800">GARANTÍA</span>
+                                <span class="bg-blue-900/30 text-blue-500 text-[9px] px-2 py-0.5 rounded border border-blue-800">RENOVABLE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <h3 class="text-purple-400 text-2xl font-bold mb-3">$${precioMXN.toFixed(2)} MXN</h3>
+                        <button onclick="abrirModalCompra('${servicio.nombre}', '$${precioMXN.toFixed(2)} MXN')" class="w-full bg-gray-800 hover:bg-purple-600 border border-gray-700 text-white font-semibold py-2.5 rounded-lg transition text-xs tracking-wider">
+                            Activar / Comprar
+                        </button>
+                    </div>
+                </div>`;
+                contenedor.innerHTML += tarjetaHTML;
+            });
+        }
+
+        // 4. LÓGICA VIP
+        function activarModoVIP() {
+            if (modoVIPActivo) {
+                modoVIPActivo = false;
+                document.getElementById('btn-vip').classList.replace('bg-purple-700', 'bg-gray-800');
+                document.getElementById('icono-candado').classList.replace('fa-unlock', 'fa-lock');
+                document.getElementById('icono-candado').classList.replace('text-white', 'text-gray-400');
+                renderizarCatalogo();
+                return;
+            }
+
+            const pinIngresado = prompt("🔒 INGRESO RESTRINGIDO:\\nIngrese el PIN de distribuidor:");
+            if (pinIngresado === "102350") {
+                modoVIPActivo = true;
+                alert("✅ PIN Correcto. Tarifas de Mayoreo Activadas.");
+                document.getElementById('btn-vip').classList.replace('bg-gray-800', 'bg-purple-700');
+                document.getElementById('icono-candado').classList.replace('fa-lock', 'fa-unlock');
+                document.getElementById('icono-candado').classList.replace('text-gray-400', 'text-white');
+                renderizarCatalogo(); 
+            } else if (pinIngresado !== null) {
+                alert("❌ PIN Incorrecto.");
+            }
+        }
+
+        // 5. LÓGICA DEL MODAL Y WHATSAPP
         function abrirModalCompra(nombre, precio) {
             servicioActual = nombre;
             precioActual = precio;
             document.getElementById('modal-nombre-servicio').innerText = nombre;
             document.getElementById('modal-precio-servicio').innerText = precio;
-            document.getElementById('modal-checkout').classList.remove('hidden');
+            
+            // Mostrar modal
+            const modal = document.getElementById('modal-checkout');
+            modal.classList.remove('hidden');
         }
 
         function cerrarModal() {
@@ -149,8 +196,8 @@
             let nombreCliente = document.getElementById('input-nombre').value.trim();
             if (!nombreCliente) nombreCliente = "Cliente web";
 
-            // Si el candado VIP está abierto, manda a la línea 4114. Si no, a la 0972.
-            const numeroDestino = (typeof modoVIPActivo !== 'undefined' && modoVIPActivo) ? lineaVIP : lineaPublica;
+            // Enrutamiento Automático
+            const numeroDestino = modoVIPActivo ? lineaVIP : lineaPublica;
 
             const mensaje = `🤖 *NUEVO PEDIDO WEB*\n\nHola jazander, soy ${nombreCliente}. Deseo adquirir:\n\n📌 *Servicio:* ${servicioActual}\n💰 *Costo:* ${precioActual}\n\n¿Me proporcionas los métodos de pago?`;
             const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
@@ -158,391 +205,10 @@
             window.open(urlWhatsApp, '_blank');
             cerrarModal();
         }
+
+        // INICIAR
+        window.onload = renderizarCatalogo;
     </script>
-
-<body>
-  <header>🛡️ Chars Stream<span>Pro</span></header>
-  <div class="hero">
-    <h1>¿Qué servicio buscas hoy?</h1>
-    <p>Calidad premium con garantía de entrega y soporte continuo.</p>
-    <div class="btn-group">
-      <button onclick="openModal('historyModal')" class="action-btn">📖 Nuestra Historia</button>
-      <button onclick="openModal('faqModal')" class="action-btn">❓ Dudas y Garantía</button>
-      <button onclick="filterOfertas()" class="action-btn ofertas">🔥 Solo Ofertas</button>
-    </div>
-  </div>
-  
-  <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Buscar streaming, trámites..." oninput="filterServices()">
-  </div>
-
-  <div class="carousel-section" id="promoCarousel">
-    <h3>🔥 Ofertas Relámpago (Combos a favor)</h3>
-    <div class="carousel">
-      
-      <div class="carousel-card" style="background: linear-gradient(145deg, #102a43, #0a0f25); border-color: #2b4c7e;">
-        <div class="promo-badge" style="background: #3b82f6;">COMBO PLUS</div>
-        <h4 class="carousel-title">ViX + Crunchyroll + Paramount+</h4>
-        <p class="carousel-desc">El paquete definitivo de novelas, deportes, anime y series exclusivas (1 Mes).</p>
-        <div class="carousel-price">$139 MXN <span style="font-size:0.8rem; text-decoration:line-through; color:#64748b;">$185</span></div>
-        <button class="carousel-btn" style="background: #3b82f6;" onclick="openModal('waModal')">Activar Combo</button>
-      </div>
-
-      <div class="carousel-card" style="background: linear-gradient(145deg, #3a1547, #150a1e); border-color: #722b8c;">
-        <div class="promo-badge" style="background: #d946ef;">HOGAR INTELIGENTE</div>
-        <h4 class="carousel-title">Canva Pro + ViX Premium + Edye</h4>
-        <p class="carousel-desc">Herramientas para ti y entretenimiento seguro para tu familia (1 Mes).</p>
-        <div class="carousel-price">$129 MXN <span style="font-size:0.8rem; text-decoration:line-through; color:#64748b;">$179</span></div>
-        <button class="carousel-btn" style="background: #d946ef;" onclick="openModal('waModal')">Activar Combo</button>
-      </div>
-
-      <div class="carousel-card" style="background: linear-gradient(145deg, #3f1313, #140f26); border-color: #7e2b2b;">
-        <div class="promo-badge" style="background: #ef4444;">POCAS CUENTAS</div>
-        <h4 class="carousel-title">Netflix Completa 4K (5 Perfiles)</h4>
-        <p class="carousel-desc">Cuenta exclusiva para ti y tu familia. Resolución UHD y sin anuncios.</p>
-        <div class="carousel-price">$295 MXN</div>
-        <button class="carousel-btn" style="background: #ef4444;" onclick="openModal('waModal')">Gestionar pedido</button>
-      </div>
-
-    </div>
-  </div>
-  <div class="container" id="catalog"></div>
-  <div class="no-results" id="noResults">No se encontraron servicios.</div>
-  <div class="nu-banner">
-    <div class="logo-container" style="background:#fff; color:#820ad1; font-weight:900;">nu</div>
-    <div class="nu-text">
-      <h4>Pagos 100% Seguros</h4>
-      <p>Aceptamos Transferencias SPEI, Transacciones seguras hacia nuestra cuenta Nu México.</p>
-    </div>
-  </div>
-
-  <footer>© 2026 Chars Stream Pro. Todos los derechos reservados.<br>Plataforma de alta fiabilidad en Veracruz, México.</footer>
-  
-  <div class="whatsapp-container" onclick="openModal('waModal')">
-    <img src="harvis.jpg" class="jazander-wa-btn" alt="Jazander Bot" onerror="this.style.display='none'">
-    <span class="wa-label">Pedir servicio</span>
-  </div>
-
-  <!-- MODAL HISTORIA -->
-  <div class="modal-overlay" id="historyModal" onclick="closeOnOutside(event, 'historyModal')">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('historyModal')">×</span>
-      <h2 style="text-align:center; color:#fff; margin-top:0;">CHARS STREAM PRO</h2>
-      <p style="text-align:center; color:var(--accent); font-weight:600; font-size:0.85rem; margin-top:-10px;">CONECTA CON LO PRO</p>
-      <img src="avatar.jpg" class="avatar-img" alt="Fundador" onerror="this.style.display='none'">
-      <h3 style="color:#fff; text-align:center; margin: 12px 0 0;">Ing. Carlos</h3>
-      <p style="color:var(--accent); text-align:center; margin: 0; font-size:0.9rem;">Arquitecto & Fundador</p>
-      <div style="margin-top:1.5rem; font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
-        <h3 style="color:var(--accent); margin-bottom:0.3rem;">Visión y Evolución</h3>
-        Nacido en un dispositivo Android en Veracruz y escalado mediante terminales de Linux y scripts automatizados, Chars Stream Pro democratiza el acceso digital con atención 24/7. Seguimos creciendo integrando IA (JAZANDER) para ofrecer el mejor servicio.
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL FAQ / GARANTÍA -->
-  <div class="modal-overlay" id="faqModal" onclick="closeOnOutside(event, 'faqModal')">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('faqModal')">×</span>
-      <h2 style="color:#fff; margin-top:0;">Políticas y Garantía</h2>
-      <div style="font-size:0.9rem; color:#cbd5e1; line-height:1.6;">
-        <h3 style="color:var(--accent); margin-bottom:0.3rem;">🛡️ Garantía de 28 Días</h3>
-        <p>Todos nuestros servicios de streaming incluyen una garantía directa de 28 días de respaldo continuo. Si hay una caída, te lo reponemos.</p>
-        <h3 style="color:var(--accent); margin-bottom:0.3rem;">📱 Reglas del PIN Único</h3>
-        <p>Para cuentas compartidas, te asignaremos un Perfil con un PIN único. Queda estrictamente prohibido compartir credenciales, modificar contraseñas o entrar a otros perfiles. El incumplimiento cancela la garantía.</p>
-        <h3 style="color:var(--accent); margin-bottom:0.3rem;">⚡ Tiempos de Entrega</h3>
-        <p>Las entregas se realizan por WhatsApp tras confirmar tu pago. El tiempo promedio es de 10 a 30 minutos dentro de horarios hábiles.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL PIN MAYOREO -->
-  <div class="modal-overlay" id="pinModal" onclick="closeOnOutside(event, 'pinModal')">
-    <div class="modal-content" style="max-width: 350px; text-align:center;">
-      <span class="close-btn" onclick="closeModal('pinModal')">×</span>
-      <h2 style="color:#fff; margin-top:0;">Acceso Distribuidores</h2>
-      <p style="color:#94a3b8; margin-bottom: 1.5rem; font-size:0.9rem;">Ingresa tu PIN de seguridad de 6 dígitos para ver el catálogo de Mayoreo.</p>
-      <input type="password" id="distPin" class="pin-input" placeholder="------" maxlength="6">
-      <button class="carousel-btn" onclick="verifyPin()">Desbloquear Catálogo</button>
-      <p id="pinError" style="color:#ef4444; font-size:0.85rem; display:none; margin-top:10px;">PIN Incorrecto. Acceso denegado.</p>
-    </div>
-  </div>
-
-  <!-- MODAL WHATSAPP -->
-  <div class="modal-overlay" id="waModal" onclick="closeOnOutside(event, 'waModal')">
-    <div class="modal-content" style="max-width: 350px;">
-      <span class="close-btn" onclick="closeModal('waModal')">×</span>
-      <h2 style="text-align:center; color:#fff; margin-top:0;">Contactar a Ventas</h2>
-      <p style="text-align:center; color:#94a3b8; margin-bottom: 2rem;">Elige tu asesor para generar tu pedido y recibir tus accesos:</p>
-      <a href="https://wa.me/525629780972?text=Hola,%20me%20interesa%20un%20servicio%20del%20catálogo" class="wa-btn">💬 Asesor 1 (56 2978 0972)</a>
-      <a href="https://wa.me/525639434114?text=Hola,%20me%20interesa%20un%20servicio%20del%20catálogo" class="wa-btn">💬 Asesor 2 (56 3943 4114)</a>
-    </div>
-  </div>
-
-<script src="db_catalogo.js"></script>
-<script>
-  function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-  function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
-  function closeOnOutside(e, id) { if(e.target.id === id) closeModal(id); }
-  function verifyPin() {
-    let pin = document.getElementById('distPin').value;
-    if(pin === '102350') {
-      window.location.href = "https://wa.me/525629780972?text=Hola,%20soy%20distribuidor,%20ingresé%20el%20PIN%20correcto%20y%20quiero%20acceder%20a%20los%20precios%20de%20mayoreo.";
-    } else { document.getElementById('pinError').style.display = 'block'; setTimeout(() => { document.getElementById('pinError').style.display = 'none'; }, 3000); }
-  }
-  
-  const brandStyles = {
-    "netflix": { domain: null, bg: "linear-gradient(135deg, #e50914, #800000)", char: "N" },
-    "disney": { domain: null, bg: "linear-gradient(135deg, #001034, #0072d2)", char: "D+" },
-    "max": { domain: null, bg: "linear-gradient(135deg, #002be7, #00125e)", char: "M" },
-    "prime": { domain: null, bg: "linear-gradient(135deg, #00a8e1, #1a2332)", char: "P" },
-    "vix": { domain: null, bg: "linear-gradient(135deg, #ff4500, #8b1e00)", char: "V" },
-    "paramount": { domain: null, bg: "linear-gradient(135deg, #0054ff, #002266)", char: "P+" },
-    "crunchy": { domain: null, bg: "linear-gradient(135deg, #f47521, #cb5200)", char: "C" },
-    "youtube": { domain: null, bg: "linear-gradient(135deg, #ff0000, #b30000)", char: "YT" },
-    "spotify": { domain: null, bg: "linear-gradient(135deg, #1ed760, #136a30)", char: "S" },
-    "canva": { domain: null, bg: "linear-gradient(135deg, #00c4cc, #7d2ae8)", char: "C" },
-    "chatgpt": { domain: null, bg: "linear-gradient(135deg, #10a37f, #065440)", char: "AI" },
-    "microsoft": { domain: null, bg: "linear-gradient(135deg, #00a4ef, #f25022)", char: "M" },
-    "picsart": { domain: null, bg: "linear-gradient(135deg, #ff007f, #7f00ff)", char: "P" },
-    "capcut": { domain: null, bg: "linear-gradient(135deg, #000000, #2b2b2b)", char: "Cc" },
-    "nordvpn": { domain: null, bg: "linear-gradient(135deg, #4682b4, #1e3f66)", char: "N" },
-    "expressvpn": { domain: null, bg: "linear-gradient(135deg, #e71939, #8c0c1b)", char: "E" },
-    "tramite": { domain: null, bg: "linear-gradient(135deg, #8b5cf6, #3b0764)", char: "📄" }, 
-    "salud": { domain: null, bg: "linear-gradient(135deg, #10b981, #064e3b)", char: "🩺" },
-    "edu": { domain: null, bg: "linear-gradient(135deg, #f59e0b, #78350f)", char: "🎓" }, 
-    "auto": { domain: null, bg: "linear-gradient(135deg, #3b82f6, #1e3a8a)", char: "🚗" },
-    "casa": { domain: null, bg: "linear-gradient(135deg, #ec4899, #701a75)", char: "🏠" }, 
-    "negocio": { domain: null, bg: "linear-gradient(135deg, #eab308, #854d0e)", char: "💼" },
-    "ai": { domain: null, bg: "linear-gradient(135deg, #3b82f6, #1e3a8a)", char: "🤖" },
-    "def": { domain: null, bg: "linear-gradient(135deg, #a855f7, #581c87)", char: "⭐" }
-  };
-  function getBrandConfig(t, c) {
-    t = t.toLowerCase(); c = c.toLowerCase();
-    for (let k in brandStyles) { if (t.includes(k) && k!=="def" && k!=="tramite" && k!=="salud" && k!=="edu" && k!=="auto" && k!=="casa" && k!=="negocio" && k!=="ai") return brandStyles[k]; }
-    if (c.includes("trámite")) return brandStyles.tramite; if (c.includes("salud")) return brandStyles.salud;
-    if (c.includes("educación")) return brandStyles.edu; if (c.includes("auto")) return brandStyles.auto;
-    if (c.includes("infonavit")) return brandStyles.casa; if (c.includes("negocio") || c.includes("mayoreo")) return brandStyles.negocio;
-    if (c.includes("jazander")) return brandStyles.ai; return brandStyles.def;
-  }
-  const fullData1_viejo = [
-    { c: "🎬 1. Plataformas de Streaming", i: [ 
-      "Netflix Cuenta Completa (5 Perfiles)|$295|Cuenta premium exclusiva con 5 pantallas.|GARANTÍA 28 DÍAS|🔥 POCAS CUENTAS",
-      "Netflix Premium (1 mes)|$95|Resolución 4K Ultra HD. 1 Perfil.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Netflix Estándar con anuncios (1 mes)|$59|Cuenta básica. Incluye pausas comerciales.|GARANTÍA 28 DÍAS|ECONÓMICO",
-      "Disney+ Premium (1 mes)|$99|Catálogo completo 4K.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Disney+ Premium (2 meses)|$149|Catálogo completo 4K.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Max Platino (1 mes)|$92|Catálogo Premium de Max y HBO.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Max Platino (2 meses)|$115|Catálogo Premium de Max y HBO.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Max Platino (3 meses)|$149|Catálogo Premium de Max y HBO.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Prime Video (1 mes)|$56|Mejores películas y envíos gratis.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Prime Video (2 meses)|$99|Mejores películas y envíos gratis.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Prime Video anual|$150|Mejores películas y envíos gratis.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "ViX Premium (1 mes)|$65|Telenovelas, películas y deportes.|GARANTÍA 28 DÍAS|OFERTA DISPONIBLE",
-      "ViX Premium (2 meses)|$89|Telenovelas, películas y deportes.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "ViX Premium (3 meses)|$130|Telenovelas, películas y deportes.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "ViX Premium (6 meses)|$179|Telenovelas, películas y deportes.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "ViX Premium anual|$199|Telenovelas, películas y deportes.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Paramount+|$49|Películas, series exclusivas y deportes.|GARANTÍA 28 DÍAS|OFERTA DISPONIBLE",
-      "Crunchyroll (1 mes)|$71|Todo el anime sin anuncios.|GARANTÍA 28 DÍAS|OFERTA DISPONIBLE",
-      "Crunchyroll (2 meses)|$97|Todo el anime sin anuncios.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Crunchyroll anual|$165|Todo el anime sin anuncios.|GARANTÍA 28 DÍAS|RENOVABLE",
-      "Peacock Premium (1 mes / completa)|$69|Grandes producciones y eventos.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "Edye (1 mes / completa)|$39|Entretenimiento infantil educativo.|GARANTÍA 28 DÍAS|OFERTA DISPONIBLE",
-      "Plex|$89|Organización de contenidos multimedia.|GARANTÍA 28 DÍAS",
-      "Viki Rakuten|$77|El mejor entretenimiento asiático.|GARANTÍA 28 DÍAS",
-      "Universal+|$127|Grandes series e internacionales.|GARANTÍA 28 DÍAS",
-      "Pornhub Premium (1 mes)|$55|Acceso exclusivo en alta resolución.|PRIVACIDAD|GARANTÍA 28 DÍAS",
-      "Brazzers Premium (Perfil / 1 mes)|$55|Contenido premium privado.|PRIVACIDAD|GARANTÍA 28 DÍAS",
-      "IPTV|$75|Miles de canales de televisión en vivo.|GARANTÍA 28 DÍAS|MULTIDISPOSITIVO"
-    ]},
-    { c: "⚽ 2. Deportes", i: [
-      "DAZN|$125|La mayor plataforma de deportes en vivo.|GARANTÍA 28 DÍAS",
-      "Fox One|$127|Canales de Fox Sports.|GARANTÍA 28 DÍAS",
-      "NBA League Pass (1 mes / 1 disp)|$99|Partidos en vivo.|GARANTÍA 28 DÍAS|1 DISPOSITIVO",
-      "NBA League Pass (1 mes / 3 disp)|$149|Acceso completo.|GARANTÍA 28 DÍAS|3 PANTALLAS"
-    ]},
-    { c: "🎵 3. Música y Video", i: [
-      "Apple TV+ (1 mes)|$99|Historias originales.|GARANTÍA 28 DÍAS",
-      "Apple TV+ (3 meses)|$148|Historias originales.|GARANTÍA 28 DÍAS",
-      "YouTube Premium (1 mes)|$79|Videos sin anuncios.|GARANTÍA 28 DÍAS",
-      "YouTube Premium (2 meses)|$159|Videos sin anuncios.|GARANTÍA 28 DÍAS",
-      "YouTube Premium (3 meses)|$180|Videos sin anuncios.|GARANTÍA 28 DÍAS",
-      "YouTube Familiar|$200|Videos sin anuncios para la familia.|GARANTÍA 28 DÍAS|FAMILIAR",
-      "Spotify Premium (1 mes)|$69|Música sin interrupciones.|GARANTÍA 28 DÍAS",
-      "Spotify Premium (2 meses)|$138|Música sin interrupciones.|GARANTÍA 28 DÍAS",
-      "Spotify Premium (3 meses)|$165|Música sin interrupciones.|GARANTÍA 28 DÍAS",
-      "Spotify Familiar (6 perfiles)|$199|Música para todos.|GARANTÍA 28 DÍAS|FAMILIAR",
-      "Deezer (1 mes)|$69|Millones de canciones sin anuncios.|GARANTÍA 28 DÍAS",
-      "Deezer (2 meses)|$138|Millones de canciones sin anuncios.|GARANTÍA 28 DÍAS"
-    ]},
-    { c: "🪄 4. Aplicaciones y Herramientas", i: [
-      "Canva Pro (1 mes)|$75|Plantillas premium e IA.|GARANTÍA 28 DÍAS|OFERTA DISPONIBLE",
-      "Canva Pro (2 meses)|$149|Plantillas premium e IA.|GARANTÍA 28 DÍAS",
-      "Canva Pro (3 meses)|$180|Plantillas premium e IA.|GARANTÍA 28 DÍAS",
-      "Canva Pro (6 meses)|$250|Plantillas premium e IA.|GARANTÍA 28 DÍAS",
-      "Canva Pro anual|$299|Plantillas premium e IA.|GARANTÍA 28 DÍAS",
-      "Canva Pro (Invitación / 1 mes)|$49|Plantillas premium e IA.|GARANTÍA 28 DÍAS",
-      "ChatGPT Plus|$190|Acceso a GPT-4.|GARANTÍA 28 DÍAS|PRODUCTIVIDAD",
-      "Duolingo Plus|$74|Aprende idiomas sin anuncios.|GARANTÍA 28 DÍAS|EDUCACIÓN",
-      "Microsoft 365 (1 mes / 5 disp)|$112|Paquete Office.|GARANTÍA 28 DÍAS",
-      "Microsoft Office anual|$924|Paquete Office anual.|GARANTÍA 28 DÍAS",
-      "Picsart Pro (Completa / 1 mes)|$79|Edición avanzada.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "Picsart (Acceso familiar / 1 mes)|$89|Edición avanzada compartida.|GARANTÍA 28 DÍAS|FAMILIAR",
-      "CapCut Pro (Completa / 1 mes)|$149|Edición de video profesional.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "Adobe Express Premium (1 mes / 1 disp)|$69|Crea contenido rápido.|GARANTÍA 28 DÍAS",
-      "Configuración correo Outlook/Hotmail|$25|Creación y ajuste.|GESTIONADA"
-    ]},
-    { c: "🔐 5. VPN y Seguridad Digital", i: [
-      "PureVPN (1 mes)|$99|Protege tu privacidad.|GARANTÍA 28 DÍAS",
-      "NordVPN (1 mes / 1 disp)|$59|Red privada veloz.|GARANTÍA 28 DÍAS",
-      "NordVPN (3 meses / 1 disp)|$89|Red privada veloz.|GARANTÍA 28 DÍAS",
-      "NordVPN (3 meses / completa)|$199|Red privada veloz.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "ExpressVPN (1 mes / celular)|$79|Desbloqueo de contenidos.|GARANTÍA 28 DÍAS",
-      "ExpressVPN (1 mes / PC)|$99|Desbloqueo de contenidos.|GARANTÍA 28 DÍAS",
-      "ExpressVPN (Anual / celular)|$249|Desbloqueo de contenidos.|GARANTÍA 28 DÍAS",
-      "ExpressVPN (Anual / PC)|$299|Desbloqueo de contenidos.|GARANTÍA 28 DÍAS",
-      "Bitdefender VPN Premium (1 mes / 1 disp)|$49|Navegación privada.|GARANTÍA 28 DÍAS",
-      "Bitdefender VPN Premium (1 mes / completa)|$79|Navegación privada.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "Avira Phantom VPN Premium (3 meses / 1 disp)|$69|Navegación anónima.|GARANTÍA 28 DÍAS",
-      "Avira Phantom VPN Premium (3 meses / completa)|$99|Navegación anónima.|GARANTÍA 28 DÍAS|CUENTA COMPLETA",
-      "Surfshark VPN Premium (2 meses / 1 disp)|$79|Seguridad avanzada.|GARANTÍA 28 DÍAS"
-    ]}
-  ];
-  const fullData2 = [
-    { c: "📄 6. Trámites, Consultas e Identidad Digital", i: [
-      "RFC con IDCIF (Consulta y descarga)|$49|Descarga directa del SAT.|TRAMITADO|SEGURO",
-      "RFC (Copia informativa)|$69|Referencia informativa.|TRAMITADO",
-      "RFC Física (Apoyo 1ra inscripción)|$155|Gestión de inscripción.|TRAMITADO",
-      "RFC verificable (Constancia con QR)|$150|100% válida.|TRAMITADO",
-      "RFC (Gestión constancia oficial)|$270|Trámite sin complicaciones.|TRAMITADO",
-      "CURP (Consulta y descarga)|$15|Descargada al instante.|TRAMITADO",
-      "CURP (Copia informativa)|$45|Formato digital.|TRAMITADO",
-      "Edición de documento (No oficial)|$180|Ajustes visuales.|DISEÑO",
-      "Constancia de concubinato|$260|Obtención oficial.|TRAMITADO",
-      "Constancia de soltería / Inexistencia|$250|Trámite legal.|TRAMITADO",
-      "Inexistencia de matrimonio verificable|$270|Trámite legal.|TRAMITADO",
-      "Localización de AFORE|$35|Ubicamos tu administradora.|TRAMITADO",
-      "Recibo CFE actualizado|$35|Tu recibo digital.|TRAMITADO",
-      "NSS actualizado, 2 hojas|$60|Formato oficial.|TRAMITADO",
-      "Semanas cotizadas|$80|Historial laboral.|TRAMITADO",
-      "Vigencia de derechos|$75|Comprobante médico.|TRAMITADO",
-      "No derechohabiente ISSSTE / IMSS|$60|Documento oficial.|TRAMITADO",
-      "No derechohabiente IMSS|$60|Documento oficial.|TRAMITADO",
-      "No deudor alimenticio federal y CDMX|$65|Trámite padrón.|TRAMITADO",
-      "No deudor alimenticio Edomex|$60|Consulta deudor.|TRAMITADO",
-      "Antecedentes no penales estatal|$70|Validez estatal.|TRAMITADO",
-      "Antecedentes no penales federal|$95|Certificado federal.|TRAMITADO",
-      "Certificado de bautizo|$140|Registro de fe.|TRAMITADO",
-      "Papel de pláticas para bautizo|$150|Trámite ágil.|TRAMITADO",
-      "Certificados escolares y laborales|$70|Obtención rápida.|TRAMITADO",
-      "Acta oficial de nacimiento|$99|Válida para trámites.|TRAMITADO",
-      "Acta oficial de matrimonio|$119|Registro civil.|TRAMITADO",
-      "Acta oficial de divorcio|$129|Validez legal.|TRAMITADO",
-      "Acta oficial de defunción|$99|Gestión respetuosa.|TRAMITADO",
-      "Actas (Copia informativa)|$75|Consulta de apoyo.|TRAMITADO"
-    ]},
-    { c: "🩺 7. Servicios Médicos y Laboratorio", i: [
-      "Certificado médico IMSS / similares|$65|Para escuela o trabajo.|TRAMITADO",
-      "Ultrasonido 4D embarazo Salud Digna|$115|Citas y gestión.|TRAMITADO",
-      "Prueba de embarazo sanguínea|$60|Atención rápida.|TRAMITADO",
-      "Prueba COVID Salud Digna|$70|Programación de pruebas.|TRAMITADO",
-      "Prueba de dengue|$70|Seguimiento ágil.|TRAMITADO",
-      "Prueba antidoping Salud Digna|$70|Seguro y validado.|TRAMITADO",
-      "Solicitud de estudios de lab IMSS|$75|Gestión asistida.|TRAMITADO",
-      "Valoración de cardiología|$75|Citas especializadas.|TRAMITADO",
-      "Receta de laboratorio IMSS|$75|Gestión asistida.|TRAMITADO",
-      "Referencia / contrarreferencia IMSS|$75|Movimiento unidades.|TRAMITADO",
-      "Triage de urgencias|$75|Ingreso en urgencias.|TRAMITADO",
-      "Urgencias ISSSTE|$85|Apoyo urgente.|TRAMITADO",
-      "Incapacidad ISSSTE|$85|Gestión de reposos.|TRAMITADO",
-      "Receta médica para valoración|$65|Atención personalizada.|TRAMITADO",
-      "Incapacidad IMSS|$80|Incapacidades laborales.|TRAMITADO",
-      "Prueba de Influenza IMSS|$65|Estudios ágiles.|TRAMITADO"
-    ]},
-    { c: "🎓 8. Educación y Certificados", i: [
-      "Registro y acompañamiento INEA|$69|Estudios básicos.|TRAMITADO",
-      "Certificado de Primaria INEA|$99|Documento oficial.|TRAMITADO",
-      "Certificado de Secundaria INEA|$99|Certificado oficial.|TRAMITADO",
-      "Certificado / duplicado de Preparatoria|$149 + derechos|Validaciones oficiales.|TRAMITADO",
-      "Consulta de Título Profesional|$49|Búsqueda oficial.|TRAMITADO",
-      "Consulta de Cédula Profesional|$49|Verificación.|TRAMITADO"
-    ]},
-    { c: "🚗 9. Servicios Automotrices", i: [
-      "Permiso Provisional Circular (Guerrero)|$120 + derechos|Permiso temporal.|TRAMITADO"
-    ]},
-    { c: "🏠 10. INFONAVIT", i: [
-      "Consulta de Historial Laboral INFONAVIT|$49|Relaciones laborales.|TRAMITADO",
-      "Consulta de Datos de Cuenta INFONAVIT|$49|Detalles de tu cuenta.|TRAMITADO",
-      "Consulta de Saldo INFONAVIT|$35|Tus ahorros.|TRAMITADO",
-      "Registro de Mi Cuenta INFONAVIT|$69|Creación fácil.|TRAMITADO",
-      "Historial de Movimientos / Saldos INFONAVIT|$49|Ahorros al día.|TRAMITADO",
-      "Recuperación o cambio de clave INFONAVIT|$69|Acceso rápido.|TRAMITADO",
-      "Desbloqueo y recuperación de acceso INFONAVIT|$79|Soluciones completas.|TRAMITADO"
-    ]},
-    { c: "💼 11. ¿Quieres iniciar tu negocio?", i: [
-      "Catálogo de Distribuidores (Mayoreo)|Protegido con PIN|Para clientes VIP y emprendedores. Toca este servicio para ingresar tu PIN y ver los precios ocultos.|🔒 ACCESO VIP",
-      "Paneles de Venta Múltiple|Consultar precio|Inicia tu propio negocio administrando plataformas y clientes.|EMPRENDEDOR|SOPORTE PREMIUM"
-    ]},
-    { c: "🤖 JAZANDER | Inteligencia Artificial", i: [
-      "Asistencia Automatizada JAZANDER|24/7|Consulta precios, disponibilidad, y orientación sobre servicios.|INNOVACIÓN",
-      "Implementación de IA para Negocios|Consultar|Desarrollamos bots personalizados para tu negocio.|DESARROLLO|IA"
-    ]}
-  ];
-  
-  const allCatalogData = fullData1.concat(fullData2);
-  let filterOfertaActive = false;
-  function toggleDetails(element) { 
-    if(element.innerText.includes("Catálogo de Distribuidores")) { openModal('pinModal'); return; }
-    element.classList.toggle('open'); 
-  }
-  
-  function filterOfertas() {
-    filterOfertaActive = !filterOfertaActive;
-    let btn = document.querySelector('.action-btn.ofertas');
-    if(filterOfertaActive) { btn.style.background = '#ef4444'; btn.style.color = '#fff'; renderCatalog("OFERTA DISPONIBLE");
-    } else { btn.style.background = 'transparent'; btn.style.color = '#ef4444'; renderCatalog(); }
-  }
-
-  function renderCatalog(filterText = "") {
-    let html = "", hasResults = false; const term = filterText.toLowerCase();
-    const carousel = document.getElementById('promoCarousel');
-    if (carousel) { carousel.style.display = term.length > 0 ? 'none' : 'block'; }
-
-    allCatalogData.forEach(cat => {
-      let filteredItems = cat.i.filter(item => item.toLowerCase().includes(term));
-      if (filteredItems.length > 0) {
-        hasResults = true; html += `<div class="category"><h2>${cat.c}</h2>`;
-        filteredItems.forEach(item => {
-          let p = item.split('|'), brand = getBrandConfig(p[0], cat.c), desc = p[2] ? p[2] : "Toca el botón de WhatsApp abajo para consultar requisitos.";
-          let logoHtml = "";
-          if (brand.domain) { logoHtml = `<img src="https://icon.horse/icon/${brand.domain}" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div class="logo-container" style="background: ${brand.bg}; display:none;">${brand.char}</div>`;
-              logoHtml = `<div class="logo-container" style="background: ${brand.bg};">${brand.char}</div>`;
-          }
-          let badgeHtml = "", benefitsHtml = "";
-          if (p.length > 3) {
-            badgeHtml += `<div class="badge-container">`;
-            for (let i = 3; i < p.length; i++) {
-              let badgeClass = "", tag = p[i].trim();
-              if (tag.includes("GARANTÍA") || tag.includes("PRIVACIDAD") || tag.includes("SEGURO") || tag.includes("TRAMITADO") || tag.includes("VIP")) badgeClass = "garantia";
-              else if (tag.includes("COMPARTIDO") || tag.includes("COMPLETA") || tag.includes("DISPOSITIVO") || tag.includes("PANTALLA")) badgeClass = "acceso";
-              else if (tag.includes("POCAS CUENTAS") || tag.includes("OFERTA")) badgeClass = "urgencia";
-              badgeHtml += `<span class="badge ${badgeClass}">${tag}</span>`;
-              if(!tag.includes("POCAS") && !tag.includes("OFERTA")) benefitsHtml += `<li>${tag}</li>`;
-            }
-            badgeHtml += `</div>`;
-          }
-          html += `<div class="item" onclick="toggleDetails(this)">
-                    <div class="item-header">${logoHtml}<div class="item-info"><div class="item-title">${p[0]}</div><div class="item-price">${p[1]}</div>${badgeHtml}</div><div class="chevron">▼</div></div>
-                    <div class="item-details">${desc}<ul class="benefits-list" style="margin-top: 1rem;">${benefitsHtml}</ul></div>
-                  </div>`;
-        }); html += `</div>`;
-      }
-    });
-    document.getElementById('catalog').innerHTML = html;
-    document.getElementById('noResults').style.display = hasResults ? 'none' : 'block';
-  }
-  function filterServices() { filterOfertaActive=false; document.querySelector('.action-btn.ofertas').style.background='transparent'; document.querySelector('.action-btn.ofertas').style.color='#ef4444'; const input = document.getElementById('searchInput').value; renderCatalog(input); }
-  renderCatalog();
-</script>
 </body>
 </html>
+
