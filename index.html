@@ -199,6 +199,7 @@
     </div>
   </div>
 
+<script src="db_catalogo.js"></script>
 <script>
   function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
   function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
@@ -244,7 +245,7 @@
     if (c.includes("infonavit")) return brandStyles.casa; if (c.includes("negocio") || c.includes("mayoreo")) return brandStyles.negocio;
     if (c.includes("jazander")) return brandStyles.ai; return brandStyles.def;
   }
-  const fullData1 = [
+  const fullData1_viejo = [
     { c: "🎬 1. Plataformas de Streaming", i: [ 
       "Netflix Cuenta Completa (5 Perfiles)|$295|Cuenta premium exclusiva con 5 pantallas.|GARANTÍA 28 DÍAS|🔥 POCAS CUENTAS",
       "Netflix Premium (1 mes)|$95|Resolución 4K Ultra HD. 1 Perfil.|GARANTÍA 28 DÍAS|RENOVABLE",
